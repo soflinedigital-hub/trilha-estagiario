@@ -1,0 +1,2114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trilha do Estagiário — Prefeitura de Divinópolis</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --azul-escuro: #0D1B3E;
+  --azul-medio: #1A3668;
+  --azul-primary: #1E4D8C;
+  --azul-light: #2E6DB4;
+  --laranja: #E8670A;
+  --laranja-light: #F07D2A;
+  --verde: #1B7A3E;
+  --verde-light: #22A052;
+  --cinza-bg: #F4F6FA;
+  --cinza-card: #FFFFFF;
+  --cinza-borda: #E2E8F0;
+  --cinza-texto: #4A5568;
+  --cinza-subtexto: #718096;
+  --vermelho: #C53030;
+  --amarelo-alerta: #D69E2E;
+  --texto-dark: #1A202C;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--cinza-bg);
+  color: var(--texto-dark);
+  min-height: 100vh;
+}
+
+/* ── HEADER ── */
+.header {
+  background: var(--azul-escuro);
+  padding: 0 40px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+}
+.header-logo img { height: 44px; }
+.header-titulo {
+  font-family: 'Outfit', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: 0.3px;
+}
+.header-right {
+  font-size: 12px;
+  color: rgba(255,255,255,0.5);
+  text-align: right;
+  line-height: 1.4;
+}
+
+/* ── TELAS ── */
+.screen { display: none; }
+.screen.ativa { display: block; }
+
+/* ── HERO HOME ── */
+.hero {
+  background: linear-gradient(135deg, var(--azul-escuro) 0%, var(--azul-medio) 60%, var(--azul-primary) 100%);
+  padding: 64px 40px 80px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -80px; right: -80px;
+  width: 400px; height: 400px;
+  background: rgba(255,255,255,0.03);
+  border-radius: 50%;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -60px; left: -60px;
+  width: 300px; height: 300px;
+  background: rgba(232,103,10,0.08);
+  border-radius: 50%;
+}
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(232,103,10,0.15);
+  border: 1px solid rgba(232,103,10,0.3);
+  color: #F0A060;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 5px 14px;
+  border-radius: 20px;
+  margin-bottom: 24px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+.hero h1 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 40px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.2;
+  margin-bottom: 16px;
+  position: relative;
+  z-index: 1;
+}
+.hero h1 span { color: var(--laranja); }
+.hero p {
+  font-size: 16px;
+  color: rgba(255,255,255,0.75);
+  max-width: 540px;
+  margin: 0 auto 36px;
+  line-height: 1.7;
+  position: relative;
+  z-index: 1;
+}
+.hero-stats {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  margin-bottom: 40px;
+  position: relative;
+  z-index: 1;
+}
+.hero-stat {
+  text-align: center;
+}
+.hero-stat-num {
+  font-family: 'Outfit', sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--laranja);
+  display: block;
+}
+.hero-stat-label {
+  font-size: 12px;
+  color: rgba(255,255,255,0.6);
+  margin-top: 2px;
+}
+.hero-divider {
+  width: 1px;
+  background: rgba(255,255,255,0.15);
+  align-self: stretch;
+}
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--laranja);
+  color: #fff;
+  font-family: 'Outfit', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 14px 36px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 4px 16px rgba(232,103,10,0.4);
+}
+.btn-primary:hover {
+  background: var(--laranja-light);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(232,103,10,0.5);
+}
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  color: rgba(255,255,255,0.8);
+  font-size: 14px;
+  font-weight: 500;
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.2);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-secondary:hover {
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+}
+
+/* ── AVISO HOME ── */
+.aviso-betha {
+  background: rgba(197,48,48,0.12);
+  border: 1px solid rgba(197,48,48,0.3);
+  border-left: 4px solid var(--vermelho);
+  border-radius: 8px;
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  max-width: 600px;
+  margin: 32px auto 0;
+  position: relative;
+  z-index: 1;
+}
+.aviso-betha-icon { font-size: 20px; }
+.aviso-betha p { font-size: 13px; color: #FC8181; line-height: 1.5; }
+.aviso-betha strong { color: #FEB2B2; }
+
+/* ── SEÇÃO COMO FUNCIONA ── */
+.section {
+  padding: 56px 40px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.section-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--azul-escuro);
+  margin-bottom: 8px;
+}
+.section-sub {
+  font-size: 14px;
+  color: var(--cinza-subtexto);
+  margin-bottom: 36px;
+}
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.step-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 28px 24px;
+  border: 1px solid var(--cinza-borda);
+  position: relative;
+  transition: box-shadow 0.2s;
+}
+.step-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+.step-num {
+  width: 36px; height: 36px;
+  background: var(--azul-primary);
+  color: #fff;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+.step-card h3 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--texto-dark);
+  margin-bottom: 8px;
+}
+.step-card p { font-size: 13px; color: var(--cinza-texto); line-height: 1.6; }
+
+/* ── MODALIDADE ── */
+.modalidade-section {
+  padding: 56px 40px;
+  background: var(--azul-escuro);
+}
+.modalidade-inner {
+  max-width: 860px;
+  margin: 0 auto;
+  text-align: center;
+}
+.modalidade-inner .section-title { color: #fff; }
+.modalidade-inner .section-sub { color: rgba(255,255,255,0.6); }
+.modalidade-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 36px;
+}
+.mod-card {
+  background: #1E4D8C;
+  border: 2px solid rgba(255,255,255,0.25);
+  border-radius: 16px;
+  padding: 36px 28px;
+  cursor: pointer;
+  transition: all 0.25s;
+  text-align: left;
+  position: relative;
+  overflow: hidden;
+}
+.mod-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--laranja);
+  transform: scaleX(0);
+  transition: transform 0.25s;
+}
+.mod-card:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: rgba(255,255,255,0.25);
+  transform: translateY(-3px);
+}
+.mod-card:hover::before { transform: scaleX(1); }
+.mod-card-icon {
+  width: 52px; height: 52px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+.mod-card-icon.azul { background: rgba(30,77,140,0.4); }
+.mod-card-icon.laranja { background: rgba(232,103,10,0.2); }
+.mod-card h3 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 10px;
+}
+.mod-card p { font-size: 13px; color: rgba(255,255,255,0.65); line-height: 1.6; margin-bottom: 20px; }
+.mod-tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 20px;
+  margin-bottom: 8px;
+}
+.mod-tag.verde { background: rgba(27,122,62,0.3); color: #68D391; }
+.mod-tag.azul-tag { background: rgba(30,77,140,0.4); color: #90CDF4; }
+.mod-card-cta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--laranja);
+  margin-top: 20px;
+}
+
+/* ── TELA INTERMEDIÁRIA (HUB) ── */
+.hub-header {
+  background: linear-gradient(135deg, var(--azul-escuro) 0%, var(--azul-medio) 100%);
+  padding: 40px;
+}
+.hub-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 20px;
+}
+.hub-breadcrumb span { color: rgba(255,255,255,0.9); }
+.hub-breadcrumb .sep { color: rgba(255,255,255,0.3); }
+.hub-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 8px;
+}
+.hub-sub { font-size: 14px; color: rgba(255,255,255,0.65); }
+.hub-opcoes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  padding: 48px 40px;
+  max-width: 860px;
+  margin: 0 auto;
+}
+.hub-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 36px 32px;
+  border: 1px solid var(--cinza-borda);
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: center;
+}
+.hub-card:hover {
+  border-color: var(--azul-primary);
+  box-shadow: 0 8px 30px rgba(30,77,140,0.12);
+  transform: translateY(-3px);
+}
+.hub-card-icon {
+  width: 64px; height: 64px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  margin: 0 auto 20px;
+}
+.hub-card-icon.azul-bg { background: #EBF4FF; }
+.hub-card-icon.verde-bg { background: #F0FFF4; }
+.hub-card h3 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--texto-dark);
+  margin-bottom: 10px;
+}
+.hub-card p { font-size: 13px; color: var(--cinza-texto); line-height: 1.6; margin-bottom: 20px; }
+.hub-card .btn-entrar {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--azul-primary);
+  background: #EBF4FF;
+  padding: 8px 18px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+/* ── TRILHA ── */
+.trilha-container {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 40px;
+}
+.trilha-intro {
+  background: #fff;
+  border-radius: 12px;
+  padding: 28px;
+  border: 1px solid var(--cinza-borda);
+  margin-bottom: 28px;
+}
+.trilha-intro h2 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--azul-escuro);
+  margin-bottom: 10px;
+}
+.trilha-intro p { font-size: 14px; color: var(--cinza-texto); line-height: 1.7; }
+.passo {
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid var(--cinza-borda);
+  margin-bottom: 16px;
+  overflow: hidden;
+  transition: box-shadow 0.2s;
+}
+.passo:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
+.passo-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 24px;
+  cursor: pointer;
+  user-select: none;
+}
+.passo-num {
+  width: 40px; height: 40px;
+  min-width: 40px;
+  border-radius: 50%;
+  background: var(--azul-primary);
+  color: #fff;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.passo-num.laranja { background: var(--laranja); }
+.passo-num.verde { background: var(--verde); }
+.passo-info { flex: 1; }
+.passo-info h3 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--texto-dark);
+  margin-bottom: 3px;
+}
+.passo-info span { font-size: 12px; color: var(--cinza-subtexto); }
+.passo-chevron {
+  font-size: 18px;
+  color: var(--cinza-subtexto);
+  transition: transform 0.2s;
+}
+.passo.aberto .passo-chevron { transform: rotate(180deg); }
+.passo-body {
+  display: none;
+  padding: 0 24px 24px;
+  border-top: 1px solid var(--cinza-borda);
+}
+.passo.aberto .passo-body { display: block; }
+.passo-body p { font-size: 14px; color: var(--cinza-texto); line-height: 1.7; margin-top: 16px; }
+
+/* alertas inline */
+.alerta {
+  display: flex;
+  gap: 12px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-top: 14px;
+  font-size: 13px;
+  line-height: 1.6;
+}
+.alerta.vermelho { background: #FFF5F5; border-left: 4px solid var(--vermelho); color: #742A2A; }
+.alerta.amarelo { background: #FFFBEB; border-left: 4px solid var(--amarelo-alerta); color: #744210; }
+.alerta.azul { background: #EBF8FF; border-left: 4px solid var(--azul-light); color: #2C5282; }
+.alerta.verde { background: #F0FFF4; border-left: 4px solid var(--verde); color: #1C4532; }
+.alerta-icon { font-size: 16px; margin-top: 1px; flex-shrink: 0; }
+.alerta strong { font-weight: 600; }
+
+/* doc list */
+.doc-list { margin-top: 14px; display: flex; flex-direction: column; gap: 8px; }
+.doc-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 14px;
+  background: var(--cinza-bg);
+  border-radius: 8px;
+  border: 1px solid var(--cinza-borda);
+}
+.doc-check {
+  width: 20px; height: 20px; min-width: 20px;
+  border-radius: 5px;
+  border: 2px solid var(--cinza-borda);
+  background: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s;
+  margin-top: 1px;
+}
+.doc-check.marcado {
+  background: var(--verde);
+  border-color: var(--verde);
+  color: #fff;
+}
+.doc-info h4 { font-size: 13px; font-weight: 600; color: var(--texto-dark); margin-bottom: 2px; }
+.doc-info p { font-size: 12px; color: var(--cinza-subtexto); }
+.doc-info .erro { font-size: 11px; color: var(--vermelho); margin-top: 3px; }
+
+/* video placeholder */
+.video-placeholder {
+  background: var(--azul-escuro);
+  border-radius: 10px;
+  padding: 40px;
+  text-align: center;
+  margin-top: 14px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.video-placeholder:hover { opacity: 0.85; }
+.video-play { font-size: 44px; margin-bottom: 12px; }
+.video-placeholder p { font-size: 13px; color: rgba(255,255,255,0.7); }
+.video-placeholder strong { color: #fff; display: block; font-size: 14px; margin-bottom: 6px; }
+
+/* btn download */
+.btn-download {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--azul-primary);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 9px 18px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+  text-decoration: none;
+}
+
+/* ── ACOMPANHAR ── */
+.acompanhar-container {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 40px;
+}
+.busca-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 36px;
+  border: 1px solid var(--cinza-borda);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+  margin-bottom: 24px;
+}
+.busca-card h2 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--azul-escuro);
+  margin-bottom: 6px;
+}
+.busca-card p { font-size: 13px; color: var(--cinza-texto); margin-bottom: 24px; }
+.input-group { display: flex; gap: 10px; }
+.input-busca {
+  flex: 1;
+  padding: 12px 16px;
+  border: 1px solid var(--cinza-borda);
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: 'Inter', sans-serif;
+  color: var(--texto-dark);
+  outline: none;
+  transition: border-color 0.2s;
+}
+.input-busca:focus { border-color: var(--azul-primary); }
+.btn-buscar {
+  background: var(--azul-primary);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 12px 24px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-family: 'Outfit', sans-serif;
+}
+.processo-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 24px;
+  border: 1px solid var(--cinza-borda);
+  margin-bottom: 16px;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: none;
+}
+.processo-card.visivel { display: block; }
+.processo-card:hover { border-color: var(--azul-primary); box-shadow: 0 4px 16px rgba(30,77,140,0.1); }
+.processo-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px; }
+.processo-num { font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 15px; color: var(--azul-escuro); }
+.status-badge {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+.status-badge.analise { background: #FEFCE8; color: #854D0E; border: 1px solid #FDE68A; }
+.status-badge.pendente { background: #FFF5F5; color: #9B2C2C; border: 1px solid #FCA5A5; }
+.status-badge.assinatura { background: #EFF6FF; color: #1E40AF; border: 1px solid #BFDBFE; }
+.status-badge.concluido { background: #F0FFF4; color: #166534; border: 1px solid #86EFAC; }
+.processo-info { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.processo-info-item label { font-size: 11px; color: var(--cinza-subtexto); display: block; }
+.processo-info-item span { font-size: 13px; font-weight: 500; color: var(--texto-dark); }
+
+/* detalhe processo */
+.detalhe-processo { display: none; }
+.detalhe-processo.visivel { display: block; }
+.detalhe-header {
+  background: var(--azul-escuro);
+  padding: 24px;
+  border-radius: 12px 12px 0 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.detalhe-header h3 { font-family: 'Outfit', sans-serif; font-size: 16px; font-weight: 700; color: #fff; }
+.detalhe-body { background: #fff; border-radius: 0 0 12px 12px; border: 1px solid var(--cinza-borda); border-top: none; padding: 24px; }
+.timeline { margin-top: 8px; }
+.timeline-item { display: flex; gap: 16px; margin-bottom: 20px; }
+.timeline-dot {
+  width: 12px; height: 12px; min-width: 12px;
+  border-radius: 50%;
+  margin-top: 4px;
+}
+.timeline-dot.verde { background: var(--verde); }
+.timeline-dot.amarelo { background: var(--amarelo-alerta); }
+.timeline-dot.cinza { background: #CBD5E0; border: 2px dashed #A0AEC0; background: transparent; }
+.timeline-dot.vermelho-dot { background: var(--vermelho); }
+.timeline-content h4 { font-size: 13px; font-weight: 600; color: var(--texto-dark); margin-bottom: 3px; }
+.timeline-content p { font-size: 12px; color: var(--cinza-subtexto); }
+.timeline-content .pendencia { font-size: 12px; color: var(--vermelho); font-weight: 500; }
+.btn-betha {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--laranja);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  margin-top: 16px;
+}
+.pareceres-section { margin-top: 20px; }
+.parecer-item {
+  background: var(--cinza-bg);
+  border-radius: 8px;
+  padding: 14px;
+  margin-bottom: 10px;
+  border-left: 3px solid var(--azul-primary);
+}
+.parecer-item.retorno { border-left-color: var(--vermelho); }
+.parecer-meta { font-size: 11px; color: var(--cinza-subtexto); margin-bottom: 6px; }
+.parecer-texto { font-size: 13px; color: var(--texto-dark); }
+
+/* ── VAGAS ── */
+.vagas-container { padding: 40px; max-width: 1100px; margin: 0 auto; }
+.vagas-filtros {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px 24px;
+  border: 1px solid var(--cinza-borda);
+  margin-bottom: 24px;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.filtro-select {
+  padding: 8px 14px;
+  border: 1px solid var(--cinza-borda);
+  border-radius: 6px;
+  font-size: 13px;
+  font-family: 'Inter', sans-serif;
+  color: var(--texto-dark);
+  background: #fff;
+  outline: none;
+  cursor: pointer;
+}
+.filtro-label { font-size: 13px; font-weight: 600; color: var(--cinza-texto); }
+.vagas-table-wrap { background: #fff; border-radius: 12px; border: 1px solid var(--cinza-borda); overflow: hidden; }
+.vagas-table { width: 100%; border-collapse: collapse; }
+.vagas-table th {
+  background: var(--azul-escuro);
+  color: #fff;
+  font-family: 'Outfit', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 14px 16px;
+  text-align: left;
+  letter-spacing: 0.3px;
+}
+.vagas-table td {
+  padding: 14px 16px;
+  font-size: 13px;
+  color: var(--texto-dark);
+  border-bottom: 1px solid var(--cinza-borda);
+}
+.vagas-table tr:last-child td { border-bottom: none; }
+.vagas-table tr:nth-child(even) td { background: var(--cinza-bg); }
+.vagas-table tr:hover td { background: #EBF4FF; }
+.tag-turno {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 9px;
+  border-radius: 12px;
+}
+.tag-turno.manha { background: #FFF7ED; color: #9A3412; border: 1px solid #FED7AA; }
+.tag-turno.tarde { background: #EFF6FF; color: #1E40AF; border: 1px solid #BFDBFE; }
+.btn-interesse {
+  background: var(--verde);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 7px 16px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.15s;
+  font-family: 'Outfit', sans-serif;
+}
+.btn-interesse:hover { background: var(--verde-light); }
+
+/* ── FAQ ── */
+.faq-container { max-width: 800px; margin: 0 auto; padding: 40px; }
+.faq-item {
+  background: #fff;
+  border-radius: 10px;
+  border: 1px solid var(--cinza-borda);
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+.faq-pergunta {
+  padding: 18px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--texto-dark);
+}
+.faq-pergunta:hover { background: var(--cinza-bg); }
+.faq-chevron { font-size: 18px; color: var(--cinza-subtexto); transition: transform 0.2s; }
+.faq-item.aberto .faq-chevron { transform: rotate(180deg); }
+.faq-resposta { display: none; padding: 0 20px 18px; font-size: 13px; color: var(--cinza-texto); line-height: 1.7; border-top: 1px solid var(--cinza-borda); padding-top: 14px; }
+.faq-item.aberto .faq-resposta { display: block; }
+
+/* ── BOTÃO VOLTAR ── */
+.btn-voltar {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.8);
+  font-size: 13px;
+  padding: 7px 14px;
+  border-radius: 6px;
+  border: 1px solid rgba(255,255,255,0.15);
+  cursor: pointer;
+  margin-bottom: 16px;
+  transition: background 0.15s;
+}
+.btn-voltar:hover { background: rgba(255,255,255,0.18); color: #fff; }
+
+/* ── NAV TABS ── */
+.nav-tabs {
+  display: flex;
+  gap: 4px;
+  background: rgba(255,255,255,0.08);
+  padding: 4px;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+.nav-tab {
+  flex: 1;
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.6);
+  border-radius: 6px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.15s;
+  font-family: 'Inter', sans-serif;
+}
+.nav-tab.ativo {
+  background: rgba(255,255,255,0.15);
+  color: #fff;
+  font-weight: 600;
+}
+
+/* modal interesse */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 200;
+  align-items: center;
+  justify-content: center;
+}
+.modal-overlay.aberto { display: flex; }
+.modal-box {
+  background: #fff;
+  border-radius: 16px;
+  padding: 36px;
+  max-width: 480px;
+  width: 90%;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+}
+.modal-box h3 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--azul-escuro);
+  margin-bottom: 8px;
+}
+.modal-box p { font-size: 13px; color: var(--cinza-texto); margin-bottom: 24px; line-height: 1.6; }
+.modal-vaga-info {
+  background: var(--cinza-bg);
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 20px;
+}
+.modal-vaga-info h4 { font-size: 14px; font-weight: 700; color: var(--azul-escuro); margin-bottom: 8px; }
+.modal-vaga-info p { font-size: 13px; color: var(--cinza-texto); margin-bottom: 4px; }
+.modal-btns { display: flex; gap: 10px; }
+.btn-confirmar {
+  flex: 1;
+  background: var(--verde);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-family: 'Outfit', sans-serif;
+}
+.btn-cancelar {
+  background: var(--cinza-bg);
+  color: var(--cinza-texto);
+  font-size: 14px;
+  padding: 12px 20px;
+  border-radius: 8px;
+  border: 1px solid var(--cinza-borda);
+  cursor: pointer;
+}
+
+/* print simulado */
+.print-simulado {
+  border: 2px dashed var(--cinza-borda);
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  background: var(--cinza-bg);
+  margin-top: 14px;
+}
+.print-simulado p { font-size: 12px; color: var(--cinza-subtexto); margin-bottom: 10px; }
+.print-simulado img { max-width: 100%; border-radius: 6px; border: 1px solid var(--cinza-borda); }
+
+/* progress bar */
+.progress-wrap { margin: 12px 0; }
+.progress-label { display: flex; justify-content: space-between; font-size: 12px; color: var(--cinza-subtexto); margin-bottom: 6px; }
+.progress-bar { height: 6px; background: var(--cinza-borda); border-radius: 3px; overflow: hidden; }
+.progress-fill { height: 100%; background: var(--verde); border-radius: 3px; transition: width 0.4s ease; }
+
+@media (max-width: 768px) {
+  .hero { padding: 40px 20px 56px; }
+  .hero h1 { font-size: 28px; }
+  .steps-grid, .modalidade-cards, .hub-opcoes { grid-template-columns: 1fr; }
+  .section, .trilha-container, .vagas-container, .acompanhar-container, .faq-container { padding: 24px 20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-logo">
+    <img src="data:image/png;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCADcBAADASIAAhEBAxEB/8QAHQABAAICAwEBAAAAAAAAAAAAAAcIBQYDBAkBAv/EAFAQAAEDAgMCBQ8JBQkAAgMBAQEAAgMEBQYHERIhCDFBUXETFBUiNDU2VGFykZKTscEXGDIzUlNzgdEWI0Kh4SRDRFViY4Ki8CeDJSY3RbL/xAAbAQEAAgMBAQAAAAAAAAAAAAAABgcBBAUCA//EAC4RAAICAQIEBQMEAwEAAAAAAAABAgMEBREGEiExEzRBUXEWIjIUM1JhFZHBJP/aAAwDAQACEQMRAD8AuWiIgCIiAIiIAsHjS/wYctDq+oe1jRrvKzb3BrdTxKpPC7zK2W1GGoZ+2a49rr+SA7174T9XR3OemgpYXsY7RrtBvXT+dNc+Wgi9AWm5G5MOxYHV95peqRSDbYdlTHLwb8LEDSg5PshAad86e5eIxegJ86e5eIxegLbfm24Y8Q/6hPm24Y8Q/wCoQGpfOnuXiMXoCfOnuXiMXoC2v5tuGfEP+oT5tuGfEP8AqEBqnzp7l4jF6Anzp7j4lD6Atq+bZhrxD/qF8PBsw14h/wBQgNW+dPcfEofQE+dPcfEofQFtB4NmG/EP+oXz5teG/EP+oQGsfOnuPiUPoCfOnuPiUPoC2Y8GvDniH/UL9s4NmGhx0H/UIDVvnTXPxGL0NT501z8Ri9AW3s4N2Fxx0H/UL9ng34W8Q/6hAab86a5ctDF6AslhrhNVNyukFLPTwsje/Zc7QblmZ+DbhksIbQb9N3ahQfnVlNU4GqYqu2U3Uoh2zjpyIC8uGLzT3y2trKaRr2HTeFlVVzgkZkQ1dBBYJp9Z3OHa6/krRg6jUIAiIgCIiAIiIAiIgCIiAIiFAEWh5h5j2fB9U2C4zFjnDUb1pg4QmEvGz6wQE3ooQ+cJhLxs+sEHCEwjr3WfWCAm9FEduz6wXOQ01R2j/qC3/C+KbXiKMvt8m0ANeNAZ1EWLxJd6ey0Bq6l2ywa70BlEUK1efuFKaqkgfVkOY7Q9sFxfOEwl42fWCAm9FCHzhMJeNn1gvreEHhHaANWfWCAm5FFVqzywbWyNjZVEuP8AqC3+xYgt95jbJRyBwI1G9AZZEXUu9bFb6J9TMdGN4ygO2ihu8Z7YXt1xkpJqoh7OMbQXU+cJhLxs+sEBN6KEPnCYS8bPrBPnCYS8bPrBATeihD5wmEvGz6wWTwznZhq93VlBS1JdI7iG0EBLiLhop21NMyZh1a4blp+YuYFpwfKyO4zFheNRvQG7IoQ+cJhLxs+sE+cJhLxs+sEBN6KEPnCYS8bPrBPnCYS8bPrBATeih6zZ54XuVbHTQ1RLnuDR2w5VLtNK2enjmb9F7Q4fmEByIo4x5mpYsK3GSirpyyRnGNVq/wA4TCXjZ9YICb0UIfOEwl42fWCfOEwl42fWCAm9FCHzhMJeNn1gv3FwgcJySBgqzqf9QQE2IsPhG+0uIbNFcqR+1FJxFdfGWJqLDlKJ6x+y3TXjQGwIoRfwgsJNe5pqzq0kfSCkvBOKqDE9tiraKTbjk4jqgNjRadmNjq14NjhfcZdgScW/RaD84PCWvdZ9YICb0UIfOEwl42fWCfOEwl42fWCAm9FCHzhMJeNn1gnzhMJeNn1ggJvRQ/Ys8sMXW5QUUFUTJK/ZaNocakbFF/pLHYH3aqfswtAJP5aoDNIoSk4QGE2TdTNWdddPpBSJgDGNuxbTSTUEm21g1O9AbSiIgCLTcwseWrCBYLhKWbY1G9aNTZ/4Tml2G1Z184ICa0WNw7dYLxa4a+ndtRyjUFfcQ3WC0WyatqHbMcTdSUBkUUKVGf8AhOKQsdVnUf6guP5wmEvGz6wQE3ooQ+cJhLxs+sF9ZwhMIl2hqz6wQE3IortOeWDa14YyqJcd30gpAw9faC+U5nopA5g8qAyiIiAIi6N7ulNaaM1VU7ZjHKgO8ihi4594UpK6WmfVEOjdoe2C4GcIPCJcB12fWCAm5FgcGYnoMS2qKuoZNuOTiOqzyAIiIAiIgCLB4zxFR4btvXtY/Zj149VF83CAwnFM+N1WdWnT6QQE2IoQ+cJhLxs+sE+cJhLxs+sEBN6KHbfn7g2Z4Y6rOp4u2C3jDWPLFf5GMoZtou4t4QG1IgIPEiAIsbiS6wWa2Prql2zGzjKiiuz8wrS1T4JKshzePtggJpRQh84TCXjZ9YJ84TCXjZ9YICb0UIfOEwl42fWCfOEwl42fWCAm9FFmC848O4lvLLbRVBfK/iGoUoxPD2Bw4igP0iIgCIiAIi69yqW0dDNUvIAjYXH8kBpOc+LYMN4Wq3GZrJgzVu/fxKkeFrdX5o5nOdLtvY/R204buNbfwnMdy4txSy126Yv1BjLWHTeNymbgo5cxWbDtJeKqPSqIAIcN/EgJlwHYqaw4boqOKJrHxxbLiOVZqqqIqaF000jWMbxlx0C5CWtaSdwCr1wqczRYbVUWSjlAmmZqNDoeL+qAmGXGtiZKY+yFKSP90L5+21j/AMwpfaheaEF/vs564krasOPJ1Urn7O3rx6r9q5AelH7bWP8AzCl9qE/bax/5hS+0C81+zt68eq/auQ329ePVftXID0nOOLH4/S+0C/Jx1Yh/j6X2gXmz2cvXj1X7Vy+G9Xk/46q9qUB6SnHliH+OpfaBfDj2xePUvtAvNrszePH6r2pTsxePHqr2pQHpIcf2If46l9oEGP7Ef8dS+0C82uy938eq/alOy938eq/alAekwx7Yj/jqX2gX6/buxaa9f0vtAvNgXi8D/HVXtSjrxeC3Tr+q9q5Aentov1tuh2aSrgldx6MeCViczMNUmIsM1sEsDZJXRaMJ5FRvg+5mXLDeLSK+oldC8hgMj9Rv3cqv7h64wXa0U9TG4PEkYcUB551UVwytzJY0dUa1hJ1A3cavRlHiiDEeFqScTNfK5mrhrvUQcLTLllytNXf6SLWoaCAGjTkUacFrHsmH8ROtVzmMeyNgNedd5GiAvAi4aGdtVRxVDTqJGhwXMgCIiAIiIAiIgCIiAIeJEPEgKncMQO/aGAg7upj3BVxhY+R+yzUk8yshwwvCCH8Me4KA8Ita67xhwBG0OPpQyjuU+EL1PCyVlHUlrhqCIyvlThC9wsLusao6f7ZV98A2y3PwdbXOoaZxMI1JiHOs1NZrXI3Q2+l9kEG55sTwXGgd+9hmhI+00hbfl5j+72G6Qk1svUtsbTeTRWOz/wAsqCqskldSRtbKSTssboqfXKndRXCam3gxO0QHodlni6mxZY21kOjdkBp38ZXRzqBOFHaH7XuUMcEu8zRW0URcXB8nKfKVNGdHgo7/AJe5DBQbEZIvtZv/ALwrktFluFzbtU0Esg52t1XHiXv9WfiFWX4JdDR1Fh254IpHdU/iYDylDJABwVfAdOsqn2ZXHPg++RMLzQ1R0/2yvRLsVbP8vpfZN/RfiazWuWMsNvpd40+qCDc82XC5W6Xt2SwPH2m6Fb3ldmXdsP3mM1VXLLC5zWhvNqdFM3CTy6t8Nqqb9A1sZiGmyxug4v6KqlO7ZqI3DkeD/NAek+EbvFeLLTVUbgS+MOOhXWzD8GZ9P/bio34L1zlr7LMyRxIjYANT5QpIzB8GZ0MFAMxtRi2s38qxlqtlZcnaU0Ukm/8AhbqsnmR4XVnSpf4J9FT1UlQZ4Y5NH/xNB5QhkiY4Lvg/wVT7Mr5+xd88SqvZlehzbVbNkf8A4+l4vugnYm2f5fS+yb+iDc88f2LvniNV7Mrb8oMK3imxnTyS0lQxo5SwjlV3+xNs/wAvpfZNX2K2W+J+3HRU7Hc4jAKDc48OMdHZ4GP11A5VXDhkBxuFIQdO0+Cs80Bo0AACrHwxu76XzPghgq20Pc7RupK2CjwleaqBs0dHUua4agiMrH4ea11yaHAEK/8Alfa7c7BFuc+hpnOMe8mIIZKLfsXfPEqr2ZT9i754lVezK9DuxNs/y+l9k39E7E2z/L6X2Q/RBuUMwNg++MxDSPNLUsa2ZpJLDzq+tmaWWijY7jbAwH0BfI7Xbo3bTKGmaecRhdwAAaAaAIYKX8KsOGNqw67t/vUI08ck0jY4w5xJ0AAU4cKzwzrPz96jLLaNkmJaNr2hw6u3cQhk/MeDb29geKKp0I1H7sr9fsXfPEqr2ZXoLaLVbexVJrQUupgZ/dD7IXZ7E2z/AC+l9k39EG554/sXfPEqr2ZX6gwZfTO0CjqQefqZXoZ2Jtn+X0vsm/onYm2a69YUvsgg3NKyCoai35d0VNVBwkbxhw0PEFg+EmD2Cbof7s/FS3FFHEwMiY1jRyNGgUS8JHvE38M/FDBR6qJ65l3/AMZ96uvwYtf2Mouj4BUnqu6pfPPvV2ODF4F0PR8AhlmD4XlkuF3gt5omSP2B2wY3XnVZhgy+En+w1XsyvRappaepAE8EcunFttBXALRbB/8A59L7IINzzsrMJXimh6rJSVDR5WFa/KHxyOY7UEHQgr0HzStlubhyQtoqdh2XbxGByKg+KGhuIa1rQABKdNEAtVprbk8NpoZJNfst1WWOC74P8FU+zKmTgs0lLO+AzQRyHa/iaDyq1fYq2f5fS+yag3KIZc4QvcOMbbM+lqGMZOCSWHmKtdny1wykqm66ODG//wDJUhR2y3RuDmUNM1w4iIwFoXCH3ZbVwHF/QoChs+0K4AnftD3q4XBHDhZqzU69r8QqfVPfD/kPerh8ErvNV+b8QgZOyIiGCtXDCDur0pB0Gx8FV22bRrAAdFaThgfW03mfAqrlo7uCGUegWTQIwHbtTr+7X3OEE4IuWn3S+5OeAlu/DTN/wIuP4SGDz4uW02qcCdTqV3LRY7hcyRTQSyafZbqurdu7HdKs7wTKOknqJerU8Uv7v+JgPIhkr9+xd88SqvZlcc+D75FHt9Y1R/8ArK9EuxNs/wAvpfZN/RfmWzWuRmybfS6fhBBuebUjblbZO3ZNAQf4m6KQspcyLtZr3TRVFbI6Au7ZpO7RS5wnMBUMFujrKVjWOcdohjdOVVXdtQVDg0kFriNQgPSbCN8gv9njuEGmw/i0KzChPgtXaWfBNHSvcXcW8nfxKbEMBQzwoMRi3YMkhhk2Zg48R3qZJZGxRl7zo0cZVLuFBiR1ViurtjH7UQJ03+VAiF6qaWrqnzds5zzqVxvbLE4bbXNPlC3TKTDwv93ELmktDwCs/wAIXB8eGb3SRUrdWOha5x0/0hDJI/BRxW6a4Q2WSQhrGg7zu/8AblaUEEag6heeuTF/NgxWyqL9kHZbx+VX4wxViusNHVa69UjDkDMkiIhgIiICK+EqCcFN0OnbH4KjVy17ITDX+NXm4SXgW3zj8FRuv76y+ehlHetOHrncoeq01NNI3nazVd2TBd8a3XrGqP8A9ZVpuChb6GfArpJ6aGR/VBvcwHnU0utNsI07H0vsgg3PN2e03ijcXPoqlmzymMhd2xYsvdnqmyQ1ssezyBX0xRgSz3ijlhNNBEXt01bGAqdZ45fOwnfnspWufTgElxQJk/ZA5rRYi2LXWP0mjbvkedNdynRjg9gc0ggjUFebeCb7U2S8wTU7nDakaDodN2q9AMvLzHd8PUkjXhzhC3aQMx+dIJwNVaf+3FUGxTqL3Pv5VfrOfwHqv/chVBcVd/Z+lAhZrLX3RpNLBLIBx7LdVkzgu+eJVXsyp84HNBS1VtrnT08UpB/jYDyhWS7FWz/L6X2QQbnnj+xd88SqvZlfDgu+adw1XsyvQ/sTbP8AL6X2Tf0TsTbP8vpfZNQblNeD1hi7UWYFNPPSzsYNN7mEDjV0aIFtMwHj0XHDbqCF+3FRwRu52xgFdoDQaBDAREQBERACoT4SmYTcNWB1PTz7D52FhGvOpUxZe6ew2p9bUOaGgHjOioBmhfLjjvME0MEsksAqg0AbwBqgMpwdsFVGMsYsv1RF1SCOpcXEjncr8Wugp7bSNpaZuzG3iCjzIbAdPhDDTIzG3blY1+o8u/4qSppGRRuke4NABO9Aa7mJiOlw7h6qqJ37D+ouLDryrznzOxVV41xU+umk6oyKRzAdeQHT4Ka+FzmabhPFaLdIWmJ/U5Ng8e9V2pIepNJPG87R/NAcoAA0HEvqIgCIiAIiIAiIgCIiAIiIDr1THh8U0X0o3h3oOquNwTMz47pbpLbcajakiAjjGvMQqgHeCOdZLAt/qsLYpoqiCRzIeq7UgbxEID02vdtprxbnUlS3bifxhUEz2wlVYGxvJeaePqdO+oaWnT/UrrZS4vpcWYajropGA6AbOu/iWt8IbANPizDThHE0SxNdJrpvOm/4IDqcHDMBuKcPtimn23QRhg1PMpjXndlHiSvwTjsW2eSSKE1RaQ7cCNVf3DN3gvVsZV07muaQN4OqAyiIiAIiIAiIgCIiAIeJEPEgKocMLwgh/DHuCgTB41vEfnD3qe+GF4QQ/hj3BV0t9S6kqBK0kEFDKPRvL9zRg22AuH1I5fKs9tt+0PSqQ2rOquorbBSNfNpE3Z3Lkq88LlLCWRyzNceVBsWOz1xTR2fDD9qUB+pG4qi9/qW1l4qalp1Ej9pZXFWL7zfp3ddV0skTv4HLrYYsNdd7pBBFTyua94BcG7ggJ94Jtvllp2VQb2rZN+7yqc86PBR3/L3LpZHYMbhTDYglAdI/R+vNy/Fd3OjwUd/y9yGCg2Je/wBWfiFWZ4JFRBHYdl7gHdU5T5SqzYl7/Vn4hXbsGI7xaGbFvq5YW666MQyejpr6YHQyN9K457pSQsL3yN0H+pefcmYmK9o63epB6VxT5gYplbsm71GnSg2LFcJTMG3TWSqscM2r5BuGvk/qqm0rS+piYOMvA/msjPLe75N1R4qKt55Q3VSvk3lDcL3XxVFWx8DQQ7SRunFvQE6cGazS2uySSSN2RNGCN3QpCzB8GZ1kMP2uG02uCkiY0GNgaSOVY/MHwZnQwUAzI8LqzpW85A43tuEpZev5C0PdrxrRsyPC6s6Vi7Vba2vdpSwySea3VDJc1/CAwe3QCodxfaC/PzgcIeMO9YKpjsIX/XuGq9mV8/ZC/eI1Xsyg2LZ/OBwh4w71gtrwLmbZMVVUdPQSlzn8WpVIThG/Aa9YVXsypu4MlhutFiKlmqYJo2AjUObpyoNi16rFwxu76XzPgrOqsXDG7vpfM+CGCtNhlZFcGvfxK7+XWYFhpMH0FPLLo9jNDvCokwuDu111WbpqzEjYWtgdVdT5NG7kMl8flKw799/2CfKXh377/sFRHr3FP2qv1U69xRqNXVfqoNj0OsV+obwNaR21u141lVAXBclucnVOvjKRsbtseRT6hgpjwrPDOs/P3qJsF3GG2XqnqZjoxkocVLPCs8M6z8/eoOgiklkayNpc4nQAIZLo27P3CMVvgidUO2mRNae2HGAuX5wOEPGHesFUqLCV+fGHNoarQjUfuyvv7IX7xGq9mUGxbT5wOEPGHesF3LHnjha63OKhp53GSQ6AbSp/+yF+8QqvZlbFlrhe9QYxo5JKKpa0HeSwoNi+lBUsq6Zs0Z1aVFPCR7xN/DPxUj4TjfFZomP12hzqOOEj3ib+Gfihgo7Vd1S+eferscGLwLoej4BUnqu6pfPPvV2ODF4F0PR8AhlkzoiIYNPzY8GpPNd7l5/4p8Ia78Ur0AzY8GpPNd7l5/4p8Ia78UoZRPvBS+tg8/4q2aqZwUvrYPP+KtmhhhRvwiP/AObV3/uQqSFG/CI//m1d/wC5CgKHVPfD/kPerh8ErvNV+b8QqeVPfD/kPerh8ErvNV+b8Qhlk7IiIYK2cMD62m8z4FVctHdwVo+GB9bTeZ8CquWju4IZR6CZOeAlu/DTN/wIuP4SZOeAlu/DTN/wIuP4SGDz6u3djulWg4JM8UdRLtOA/dnjPkVXrt3Y7pKyNgxJebQSbfVywkjQ7CGT0d6/ptdOqN9K46i60kDC98jdB5V59OzDxWDvu1SPzXFUZgYpmYWm71HpQbFh+Ezj62zWyKjo5f3g7V2/yqqmy+qrHBm9z3Ehd97r3fZQHCoq3E79G6qVMnMprjc7vT19XHJFFG7tmPbpqgJy4MFkkpME0lTKzR27k8imdY7D1rgtFuZR07GsY3iAWRQwa1mVcxasI1lXtbJY3XVUBx7dje8RS1xdtF/L+atRwo8UC30Mtqa/Tq0Y5fIqfUcUlRUsY1pcS4cXShlFieCLh10tfV1E7Nw7Zu7yBbtwoMLmttkl0EevUIgNdPJ/RbhkLh1tpw1S1QYGumi1K2XM+1i64PrKUM2nvboEMHnVSvdDUxuG4hwP81eng+4obesPw0Yk2jTxBumvF/7VUvx1an2bEE1G5haWc48ql/goYn7G3Opp6iTUSu2WgnyBDLLiovzC7biY8fxNBX6QwEREBFnCS8C2+cfgqN1/fWXz1eThJeBbfOPwVG6/vrL56GUXG4JXgK78QfFTioO4JXgK78QfFTihgKE+FFaIJMGVtwLP3jRoD+RU2KN+ERFG/Lau29Pz6CgKEU52aiN3M8H+aunwWLi6uslQ0u16mwD+YVMKxoZWEN4gVbHgYvc613HaJ3fqEMslbOfwHqv/AHIVQXFXf2fpV+s5/Aeq/wDchVBcV9/KjpQIl7g6ZjWjBtJUxXGQt6od2h8qmh3CBweDuqHesFTezWi4XIE0dPLIBx7DdVlDhC/69w1Xsyg2LZ/OBwh4w71gvh4QWENO6HesFUz9kL94jVezK+Owjfg0nrCq9mUGxejAeYVoxWGdYSF23xalbsq1cF+z3GifTPqoZYwNNQ5uisqhgIiIAvzI9sbC950AX6Wi5xYsgw3hWsk6psThmrN6AgzhdZkFlDU4epZQHBx0LToeZYHglZbPrblNebpG7Zk/eMc/fruUW2CjuWauZWk379smh3jXlV98u8PQYew1R0ccew+OPZcgNigjbFCyJgADWho/JRdwhce0+EsJSywzN64GrS09CkTENyhtFqmrqh2jIxqd68/eEdjqXFmMqugp5i+jJ1aNfKgI7udbPeMQVtxqHOcJpNsanUL6vxCwRxNYOQL9oAiIgCInSgB4lwyVMLDo54CyFgstzxHXNpbY0k7Wyd2qmzDXBrvtbStmrqZjtQD9FAQEyrgedGvBXMCCNQrB3jgyXWCmc+ipWNeAf4VC+M8F3/CNX1O5M0YXaDRpQGFRfmN7ZG7TeRfpAEREAXFUM24nafS03FcqICZ+CtmJLYb7S2CsmLacnUucdeVXip5qe62wyRlskUzCAdOcLyw6tNbqoXGmOzMziKvTwX8wocR2KmtMk21UQx6uBPkQEOcK3LmS03qC8WyN2y09Ue5u7TcVufBKzJ65t1NYKmUFxI+kdTzKds0MM0uI8L1tPJHtyui0YqGStuOVmY4Yw9R6mSdw05UB6PscHtDmnUFfVpeUuJ4cRYWo5uqbczmau3rdEAREQBERAEREAQ8SIeJAVQ4YXhBD+GPcFXW2UprKpsI5SFYrhheEEP4Y9wUCYQJF4i0+0PehlEu2bIuWvtdPWBk371m1xldsZATbQBZNp0lWky+8DbZ+CPeVnkG5VW18HSlme3riSZg6Sply+yrs+Fo2uiDZXkfxt109KkVEMHxjWsaGtAAA03LR86PBR3/L3LeVo2dHgo7/AJe5AUGxL3+rPxCpbyJyxt+MbeKqrlczttN2qiTEvf6s/EKs9wRHkWDZ5OqfEoZOvi3g6W6CnknoZpZHgEgalVyxbh2uw/cZKergdG0PIYTyr0ocA5pB4iNFCXCBy0hvdtfcaSAF0DC9x0Qblfsj8T26zXSCO4sg6jrqXSMB5fKrpYRuVpuduiqbaINl43GNgHuXnFcaWSjq3wyNILXEcXlU7cGvMiW2XVttuc/9ja0NY3XlKAuItezB8GZ1m6Gpjq6SKoiOrJG7QWEzB8GZ0MFAMyPC6s6VLvBRo6aplnM8UbyH7tpoPKFEWZHhdWdKmTgkRl0lQ7UAB/L0hDJa1totpaP7DS8X3Tf0TsPbfEaX2Tf0Xca9myO2bxc6+7bPtt9KGDpGz20jTrGl9k39Fy0tvpKYgw08MZH2WALsbbPtt9K+7bPtN9KA+qsXDG7vpfM+Cs6qxcMbu+l8z4ICtFjhbPXtjedxV08vMtLNWYSoal7WFz2anVqpfh3vk1ehWVngLbfw0MswnyVWP7LPUXx+VNjcNNlnqKQ0QwYTDWHKOxN2aYNG7TcNFm0RAUx4VnhnWfn71GOW8bJcS0bXtBHV27iFJ3Cs8M6z8/eo0yzH/wCzUf47UMnoBaLRbexVJ/YaY6wM/um/ZHkXa7D23xGl9k39FyWh7OxNH2zfqGcv+kLs7bPtt9KGDpdh7b4jS+yb+i+x2m3xvD2UdO1w4iIgF3Ntn22+lNtn22+lAfWtDRo0ADyKI+Ej3ib+GfipdBB4iCoi4SPeJv4Z+KAo7Vd1S+eferscGLwLoej4BUnqu6pfPPvV2ODF4F0PR8AhlkzoiIYNPzY8GpPNd7l5/wCKfCGu/FK9AM2PBqTzXe5ef+KfCGu/FKGUT7wUvrYPP+KtmqmcFL62Dz/irZoYYUccIcE5bV3/ALkKkdaNnlTGqy+rIWjUn9CgPP8Aqe+A1+0Perh8EvvNV+b8Qqh32I0t3kjcNC1yszwRsTUkNJV0tTJo9/at3+UIZZZlF8a5rgCCDqj3NY0ucQABqhgrdwwPraXzPgqt2nu4KxnC9vlNLX0kMTwTpodD5FXnDcJqLoxjRqShlF/cnNf2Et34a+5v+BFx/CXYyoi6lgW3NI0IYuvm/wCBFx/CQwefN27sd0qY8icsrdjCWRtXK5mjNd2vModu3djulWk4Ih/tMv4Z9yGTp4u4OtDBSSTUEs0sjRq1up3qvOMMN12Hbm+jq4HRuZxgr0lUIcIzLqK+WmoudHBrXO17bRBuQDkZiihst20ro4Cx7gNZGA+9XSwpcLNdLfHPaxAW7I2thgGh/JecdxpJ7Xcn00o0lidodynPg5ZlSW2tis9VOQJn6Aa+VAy4i4LjN1vQzTH+Bhcv1TTsqIhJGQWlarmpfI7Nhyp237JkhcBvQwVJ4SmJDe8TsLJNRHq06Hm3KPsFVUFHeGTVGzsjTjC6eIa2Wuu1TLK7X98/T0lZGw4Pu15hbLSR6tdxdqhks3ZM7qG32alpY5Yf3bNniC7vy80Txo+WAjmICrYcs8Rfdf8AUp8meIvuv+pQbH7zivdNiDFdTcoCzSTkaNBxlYbAF0ltuJaJ7HENMwLtCu3dcA3y3UvXE8faeaVrUZfS1jXcTo3IZPR/BN3ju9lhmjcHbMbQdOhZ1QZwVcSsrcKvgqJNqXbAG/pU5oeQiIgIs4SXgW3zj8FRuv76y+erycJLwLb5x+Co3X99ZfPQyi43BK8BXfiD4qcVCHBKZ/8AobnFwA6oOXpU3bbPtN9KGD6oj4TVaIsvq6EO0ceT8ipWqqqGngfNJI0NYNTvVT+E7juCsrZrTTS6xvad2qBFdmkyTt14y4K4nBEoTSWescQRtjX+YVRLLSyVVyp42NJ1laOLyhX7ybw/2Ew5A7Y2TNEChlnPnP4D1X/uQqguKu/s/Sr9Zz+A9V/7kKoLirv7P0oEWN4HlBR1VurnVEMUhDt22wHlCsl2ItviNL7Jv6KuvAyiLrZXv1AAdy9IVl9tn22+lDDOl2HtviNL7Jv6IbPbSNOsaX2Tf0Xd22fbb6U22fbb6UBwUlDS0oAggij0+ywBdlfA9h4nN9K+oAiIgOvcaqOjo5aiRwAjYXb/ACKj/Cgx/PinEsdqtcjmtOsZaw66kDRT5wl8wo8NYfMNJK0yzMLHDm13KsmQODazGuM2Xypje+KOocSSSR9JAT3wTct22nDtJequMdc6AHaHbcSsUdljCTo1oXVtFvgtlE2lp2hrG8QA0WAzMxLS4cw7UzVEwjc6F2xrylAQvwtcx47RQzWKkmBknj3Fh4joqZUQkmAqahxfKeNx41ncwsSVWMMTSV073ERSua3tt2muixmgG4IAiIgCIiALqXF72tjEYLi54Gg6V21lctqKmu+L20Va7ZiaWkH80Ba3gk4Ioqe2vr66iZI+Vge0uHFxKyMUccTAyNoa0cgWuZdWilteGKJtNpsmEb9FsqA+ODXDRw1CjzN7Alqv2G6yQ0cXVmREtdpv1UiLhroRUUcsJ3h7dEB5cYptcuHsQPtsuupc4jXpXXUtcLPDotmPxUsZowMJ4uhRFC/qkYdzoD9oiIAiIgPjmhw2XDULZ8oMY1eDMUtqBK/qUr2s0HEATp8VrK4aqLqmy4EgsO0NPIgPTzBN7pr/AGGnnjeyTaiaXAHVQFwt8uBW2qrxBRxDqwB0DRvWr8EnM11OX2i4TAOkdsRhx113q2N9tdLfrWaSoAMbxqdRqgKbcFrMKawX11rucrnNaNgNedNCRorrUNSyrpIp2EEPaHbvKvPbOXC1XgXHct1hY+OB1Q0tIJAO9Wt4OOP2Ynw+I6iRu3CwMAHk3ICY0REAREQBERAEPEiHiQFT+GG4DEEAJ39THuCgTCRAu8RJ07Ye9W7z8y3lxfd4qqNkjthgHak8yjKz5FVcNcx7oZgAQddShks/l7vwZbNPuR7ys8sZhSiNuw9RUR11hj2d6yaGAiIgC0bOkgYUdr/q9y3la1mHZ3XqxmkaCTv4kB544k7+1n4hVnOCKR2C/wDs+JWr3TIqsqLlPN1CXRz9eMqYcjMCS4Vt3UpGPadrXehkl5cNdTsqqSWnkALZG6EFcyIYKc8JTLx9vu8lzooSyna0kho3aqDLdVT0NZHNE9zHNcCdPIV6L5gYep8SYcqLbMxv7z+LZ38RVZbvkHMLhIIIpXR8h1KGUStwdcf0+IbSaSolbG+BgaNo73HcpFzBI/Zic67v6Kv+X+Vl3w7eqeaFlQ2Pqmru2OisNiCgfcMPupHA7RaB/JDB59Zj+F1Z0ru5fY0nwq9xiL9HHU7Kl/FGSFXX32epEMpDzx6lY75A6r7mb0lDJ0358VpI0EwX5+Xeu/3l3vkDqvuZvSU+QOq+5m9JQdDo/LvXf7y79hzwrai4Njd1Ugr58gdV9zN6Su5YsjKqmuTZHQyho5dSg6FoMF15ueG6WtdrrI3Xeq9cMdwFfSAn+Ae5WHwdbza8PUtEQR1Num9Rjn/l9LjCsp5o2vd1Nunak8yGCmWHiBcWklehWVZBwJbSPu1Wa3ZEVbKkOdDMBz6lWnwRbjacM0dAddYmab0MszSIiGAiIgKYcKxw/bWsGo13+9Q1ZLg63VsdQ3XVjg7crYZ15Vz4mxJUXCOOR23rxE86j0ZB1Wm+Cb0lDJ0KbPStipo4v3vaNDfQF+vl3rv95d75A6r7mb0lPkDqvuZvSUHQ6Py713+8ny713+8u98gdV9zN6Svy7IOrHFBN6Sg6E7ZJYulxLaYJpNrV45V0+EkQLE3U/wB2fisjkxg+TDNpggka5pYOVZDN7DD8SW0Qsa4kN03IYPPyq7ql88+9XY4MXgXRdHwCiB+Q1Y+V7jBLvcTxnnVhcncLPw3YKeke1zSwcR6EMskFERDBp2bJAw0/X7LvcvP/ABR4Q134pXoljm1G7Wd1MASSDxKsF2yLrKm51M/UJdHvJG8oZR2+CmR1aAa/xfFWzUG5KZcTYZliklje0tdrvJU5IYCx+ILc26W19G/TR3OsgiAoPnbg6ts+KKucQSGEu3EN3ca0vDV9r7FcYp6aeSNrHaua3lXoDmBgm24stxpqpjWEAnaDd5VaMaZDVVLVvda4JZmucTxlDO5mMH8ImOjp2Q1dI6Zw03u1XJi3hFw1dI+Klo3RucCNRr+qimtyjxbBIQy2S+kr5R5SYtmeA+2S6dJQdDUsUX6tv9e6epmfLq4lodyLfcgsHVV4xXTSSQPEB01cRu41t2CchaiqqY3XSGWEA7+NWUwFgm24Tt7KWka12zp2xbv9KAz1jom262Q0jdNIxpuWs5wEDBFyJ+6W5rXsf2k3nDlXQgE9VZs7kMHnRdCHVjiDyq0fBDcDVTAH+7PuWn1WQtX1UlsMxGvOVM2Q+ApMJVEksjXt2m6dsTzIZJfXFVQRVMRjmYHtPIVyohgpxwlcvJbPVuutLGXtqH6kMHFvUHWuslt1wZUxuLJIzuI4wvRjG+G6TENqkp6hjSdghu7VVhuuQk5r5XRQylrnk8Z50M7krcHbH0V4w9TW+pmD6nQElx38S1ThaYqa2301LTSDUHZdsnyrr5XZX3XC2JG1scc+wBpoXHRc2ZOVtxxFUdVfFM7V2umpQFXbbTPuFybC3UukcVePIXClupcA0gqqKN0443OG/iCiXBeR01FiCmqpoZA1h366qz9ioI7bb2UsY0a1Azj7AWjxGL0J2As/iMXoWTRDBquLcJ2qvtEkLaKIENJ4vIqD5gW51uxVcIdgtY2Yhu5ekErduNzTyghV0zZycF4uLqqmie50j9p2zqhlES8HPE77biyjtznlsT3anm41eKlnZUQiWNwc08oVTsN5KV9svMNWyGYFnLqVZ7B9JLRWGGnm2ttvHqd6BmYREQwRZwkyBgpup/iPwVGbkdLlMR9tegeb+HHYlw6KJocSCTu/JVynyHq5KmR5gm0Lt28oZRpWX+aFVha1dYxmTZ113LZ/l4rdSf3y7nyB1X3M3pK+HIOq5IJvSUHQ1bE2cF4ucJjgqp4gRodCo6qZLld6nqsnVamU8umpU9W7g+uleBOyZo15ypNwJkRY7RsVEj3Okb/C4E+9ARtwdMr5Z69txuUJ6m4BwbIOIhWxo4W01LHAwaNY0NAXDarfTW6lZBBGxobyhoC7aGDSs6CBgaqJ/wDbiqC4qOt8nI516G5h2g3vDU1AASX83QqyXXIqrqLlLJ1CXZJ49ShlEa5bZg1OEIZY4S8CQ79lbq7PitJ3dWXd+QOq+5m9JT5A6r7mb0lB0Oj8u9d/vJ8u9d/vLvfIHVfczekp8gdV9zN6Sg6HdwVnRWXC+R07uqkHnVp8N1ZrbNT1J43t1VYsGZKVVtvrKh0MoaOUkqz2HqTrK0QU32G6IGZBYjFl8pbDan11W7RjQeXRZZ7msaXPIAHGSqqcLrMjremqsPUb+3BOjmn8kMEKZq4iuOPMfG308hkpxVNAbx7tVcXIDAcWEMNMaYQx8zGvOg596r9wTcuprleZrxc4y9r/AN4wyDyK51PE2GCOJo0DGhvoQH6mkbHG57iAANd5VJOFpmU+6VjbNQVG+CTYeNdeVWUz5u1yocJSi2RTOm3gdTGp4lRe7YDxXdr1U19RSVr+qv2htMQGq0sTYmkjcX7z0lcuo51sXyb4l8Tq/UT5N8S+J1fqIDXdRzpqOdbH8m2JfE6v1E+TbEvidX6iA1zUc6ajnWx/JtiXxOr9RfPk2xL4nV+ogNdc5rW7RI0WfyXtNdeMfBlE07tk66eUruWrKPE10rmU5iq4Wu43FnErfcH/AChpcI2+Csq2MmqdNHOcN/EgJawnC+mw3QwS/TZEAVk18a1rWhrRoBxBfUAQIiArlwu8FTXSw1d5gi2nsboDpryf0VK6JxhPWcoIlZx67l6pX22U13t0lFUxNkjfxh3Eql5z8HWolr57paqgxtkO6OMDd/JAVs1HOE1HOFtlXlHiaklLOpVcmh012FwjK7Ezj3LV+ogNZ1HOE1HOFtIyoxOf8PV+ovvyT4mP9xV+ogNV1HOE1HOFtXyTYm+4q/UX35JsTfcVfqIDWbFcprHiGjuFM/YbE/acV6A5BY9gxbhWGaScPmOg3u8ipFJlHiV7C3qFXv8A9ClDg5WHFmFMXUsFQ2tNI3TVpb2vGgJ64SGXsWK8OF0MIdJC0yE6c29VUyWxVX4JxsLZUSmOA1Ja5vFuBXoDGwV9qLJmfWMLSD5QqX8KbLuew4ghu1ta5rATI8xjyIC5eG7zS3y2sraR2sbgOVZNVf4JuY7ayipbBVP1kJHbOP5Kz7XNc0OaQQeVAfUREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREBxSwRyHVw1SOnijOrQuVEAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQGlZuYppcO4VrJHzBlQI9WDnVEqOO5ZpZjbErHPbLzHyqQeFLi271lTFC2VwiczRwIPMtt4GeHra+jo7u6NvXR036jVAWIyww5Bh7C1FSsjDJGR7Lt29bWvgGg0C+oDrVVFBUjSaNjxzObqFxC024DTrOn9kP0XeRAdLsVbvE6f2Q/ROxVu8Tp/ZD9F3UQHS7FW/xOn9kP0TsVb/E6f2Q/Rd1EB0uxVv8AE6f2Q/ROxVv8Tp/ZD9F3UQHWioKGL6FJTg84jC7AAaNGgAcwC+ogCIiAIiIAvy9jHjR7GuHlGq/SIDgNFRHjpKc//WP0X5FBQD/B0/sh+i7KIDg6xofE6f2Q/ROsaHxOn9kP0XOiA4OsaHxOn9kP0TrKh8Tp/ZD9FzogODrKh8Tp/ZD9EFHRtOraWBp5xGAVzogPgAA0A0C07NnC8GI8LVsLow6V0ejd29bkvjmhzS13EUB5wUzrlldmMIw1zBFznyq+GVeKKTEWGaSVkwfOWavA5FXbhj4Zt8UVXeY2NFQNd+o1WN4HuIrs+5yUskjjC1ujRoeZAXMRfiAl0LHHjIC/aAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiL8TythjL38QRvYJbn7RaFe8w7bQVz6ZxdtN5iupFmVbppWxx7Zc46Bc6Wq4sZcrmtzox0rKlHmUHsSQix1hrevqPq2/fzrIrfhNTipI0JwcJOLCIi9HkIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAr/wnct4LzaZblRxNjMEf0Wjj3Kv/BwxpU4QxzBbK4vZAzTVr9w41fS8UENyt8tHMAWSDQ7lRHhM4Iq8L4uqbnbYXCnaTo8buVAXts1fFc7bDWxEFsrdRou4oD4LeYrL/Z4bRPMC+mi0I5VOdyndBQvnj3kDULEnyrdmYrmeyOzogUUXPM2WhuLqWZzGkci4TmtpIwdUZoTvXJeuYkXs5HWWh5jW6iS6iwWEb9BfKMzxvDtOZZ0rp1WxtgpxfRnMtqlVNwkuqCIi+h8wiIgCIiAIiIAiIgCIiAIiIAiIgCIsJiy+Q2SjE8jw3XnXzssjVFzl2R7qrlbJQj3Zm00UTnNNm24CRmgPkXynzQfUVYgiexzjyLmf5vE32Ujqf4PM78pLK6F/uUNptc9bK5obE3U6r7Z6t1Vbo6mXdtDUqAuFXmQyz299npJhtVMezprv10XVjJSSaOVKLi2mQbn9jKrxtjia3UG2+nfro1m8cas1wc8AU1gw7S3CSJnVZo94I3hV84LOBKi/X+mvFxhLoXEauO/lV37bSR0NHHSxDRjBoF6PJ2AABoOIIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgC1fMO7MoLHO0PAk03DlW0Hi3KMszLLdrpX/2aEvjLd+hK0NSsnXjvw1u2b+m1wsyI+I9kiHq2eWvrTKdXOcVImW2DJKqQVVSC1rTtAOHGv3g7L+fr8OuELmNGhUwUNNHSUzIY2gBo03BRvSNGlOfjXokmr6zGEPBx2fumgjp4hHEwNAHIuREUyS26Ihre/VhERZMBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBRrnvgmLFWFJ4IYgah2p1PQpKX5kY2Rha9oIPOgPOPBF6uGWuYstK97omPqGsOgI3cSv/hK8UeIrDBLGQ8GJu3v136KrPCzy3fQPZe6CMue+Tqh2BvGhXb4IuZTo4H2S4yHqrpCxvVDvGhTuOxImc2EWwTTXSCLQE8yjFsEZj0Le2AVr8RWuC8W50Dtkg671WjFtrlst5na9p6m5+jeZV/xBpvgW+NFfayweHtSeRV4Mn90Tbcmb66hqG0Ej9OqP4vzU+McHt2hxKuuXOGKm43GG4RSuY2N28BWDt0ToKZsb3FxHKV3eG5W/p+Wa6ehwuJI0/qOaD6+p2URFIyNhERAEREAREQBERAEREAREQBERAOLeSoMzrvZqHGhY/XYfvH5qa7g176VwYSHeRV3x7h+4svNRVydVfG46jXiUc4jssWPyQXfuSPhuup5HPN9uxpxgjbGXbO8re8o8LNr7lDXzRaxcu5alZ6OS43aGmjaSNrZdpyKyGCrRT2OzNjfstI0O0VHNB079TfzyX2xJHr2o/pqOSL+6RxY1vtBhTDczpTsNETgzfpv0VCrtXV+ZWZEULi6WNtS5o1BO5Sjwssx5LlO2w2+Qh8cwYdg8epWf4JuW+tO+718OzIHdUaXjedSrFSSWyK6bbe7JzydwdDhTDMNGYg2Ruh3dC3tfGtDQABoF9WTAREQBERAF+KiQRQPldxNGpX7XVu3e2o/DK8ye0Wz1FbySNKuGY1spagxPD9QSONcHynWnmf6VEWJ9Rcpd/8AG73rFbTudQO3iDLjNpbE8q4fxJQTe5OXynWnmf6U+U608z/SoPAkPIU2ZeYrx9Q5n9f6Pf09h/3/ALJ1gzMtDnaEP9Ky1Djq01Tg1moJ53Kuer2njIXJHV1MZ1ZM9p8hX0r4kyYv7kmfOzhvGkvtbRaukq4algfG9pHSuwq64QxjWWyoYJpXytB4iVOeGr5T3iiZMx7Q938A4wpPp2rVZq2XSXsRjUdJtwnv3j7mXREXWOSabiPG9BaKt9PNtbTePQrFjM61FwAD9/lWh5rajEFQdeX4rS4ieqN38qg+ZrmVVfKEdtkycYehYttEZy33aLQ4ZvEF5oTVQa7Oum9YXEeMqOzzujnDtx03LrZNa/sy7U69sPisPnNaf/xwqYxq5zuRd67Kv/QK+H5bbnBpxaP17on+O+x2jmfatOJ/pWwYXxZRXprRDrqecqtz9pri067lt+V1ydTYhgjc4hn9VwsLX8id8Y2bbM7uboGPCiUq+6LEIuOnlE0QkbxFcimye/UhLWwRFx1LtinkdzNJ/kst7BLc13FmLaGxSMZUaku4tCte+U+06cT/AEqPcyroa65bO1rsOIWoAuJ3KD5uv5EL5Rr22RN8LQMedMZWb7ssbhTFtLfal0VOHaga71lb/eIbVTmWbXQDXctRyktJpaZtW4fWN+C7uaXe2TzF36sm9YXiz/Ij9uNQ83wofiY8Zn2rmf6VlMO44oLvUmGHa1HOVXok6net1yo1N1dv5VH8PXcq2+MJbbMkGZoWLVRKcd90WCY7aYHDlCxeJbvDZre6rn12BzLJU/1DPNC0vOIH9lJdDpvKl2ZdKrHlZHukRHDqjbkRrl2bOgczrSCRo/0rvWTMG13CrZTM2g550GpUAOLgTvXPbauSkq2TscQWnXcoXXxFlKa5ttia2cO4rg+XfctexweNWkEL6tPy4vzLlaYmvkBlPITvW4Kc498b61ZH1INkUSosdcvQLoXu4xW2jNRLrsjmXfWr5k94Hb+UrGTY66pSXdGcatWWxi+zZgpczLVHK9hD9WnnWSw9jigu1SyCEO2nHQalQDcCRWS7/wCJbblZqb5TnX+JQ/F1zKsvUJbbbkwytDxa6HOO++xYRERTchAXDVVMVPGXyPaAPKuternBbaN88j26t5CoQxzjSor6iSGne6NvIWlczUdTrwo9er9jp6dplmbLp0XuSTe8f2qiLmHaLhu3FavV5mwuJ6k94UUTVE0ztZJHOJ518igml+rjc7oUQu4gyrX9vREvp4fxa193Uks5ky7X1ztFkLfmbTh7RO95/NRT2PrdNetpPQuGSOSI9u0tPlXxWs5kHu2fZ6NhzWyRY2yY1tlyc1kZIcedy2aKVkrQ5jgQeYqqNNW1VO4OimewjmKkbAWO5IJWU9US8bhq4ru6fxErJKF/T+zg6hw664udPX+ia0XXoKuKsp2SxvDtoa7l2FKk01uiLNNPZnFVTCGF0juJoJWiVuZFrpql8Lg/VrtDvW53ruCXzHe5VjxBtC7VO/8AvCo/rmo3Yaj4fqd/Q9OpzHLxPQmP5TrTzP8ASnynWnmf6VBu07nX6AkI1AKj/wBRZn9f6JD9O4n9/wCycPlOtPM/0rlgzMtDnaEP9P8ARQVsy8xXzae08ZCLiLLXt/oPh3Efv/ssPS5gWedwa0OBPlWy2+4U9bHtxPbp0qqzKidh1bI4LZcI4qrLbVx9Ume9mu8ErfxOJZOaVy6Ghl8NRUG6X1LHosThm8xXi3tqWaAnkWWUvrsjZFSj2ZELK5VycZd0EJA4zovjiGjUnQLR8f4vitVPJFEQ6Qcx3r5ZOTDHg5zfQ+uNjTyJqEF1NjvN+orZHtzOB6HLSrxmZb2PLYC8fmonvF9rrhO97p5NknUNJ4liyXyO36uKh2XxHbN7VLZExxOHKYLe17sk6fMqQu7SVwC/VPmU5rv3kriFGrKKreNWQPI8gXySiqoxq+B7ekLn/wCXze+50P8AEYXbYmq0Zl26VwZLtEnyrdbTe6O5MDoXAa87lVtrnxnUEtIWYsWIa621LZOryOaP4dV0cTiS2LSuW6Odl8OVSTdL2ZZ8b+JFp2BcXQXiARSFsb2DlPGtxB1GoUyx8iF8FOD3RDcjHnRNwmtmFg8V4gprFGx9Rro7i0WcUZ54a9a02h03fqvhqN8qMeVkO6NjTqI35Ea59mcpzPtWh3P9Kz2FMXUV8qeoU+1taa7yq4OJ2jv5VJWSWvZ3ef4f1UX07W8m/IjXLbZkn1DRMajHlZHuibkRFNSFBERAF8kdssc48gJX1cdV3NL5h9yw+xldzSLvmDbaCpdDIH6tdod66seZtqc8NAf6VFeN9ReJt/8AeFYSnLjKN6gl2vZULXFbE7p0HFnUpPctRZ62O4UEdVFrsvG5dxa/l94LUup13LYDu41NsebnVGT9UQnIgoWyivRgkAakgDyrXr3iy3WvaEx1I5nLCZkYrbbKeSliI6ppuI41CNyulXWzukkmeQ7kJXD1TXFivw6+rO5pWhvKj4lnREqXHM2kLnNgc8fmsS/Mmba3TO0UasjkkPatLj5FzC31pGoppD+SjUtZzLHumSaOjYda22JOo8zGtcOrSOIW0WLMO1VhEZ2to7t5UCS080X1kbm9KQzSwnWN5afIvpTr+VVL7up8rtAxbV9vQtbRVcNXEJInAg+VdhQPl5jCajq44KmRzmDjLipwt1UyspGTsIIeNdymOnajDNr3Xch2o6dPCs2fY7CIi6RzTXce4fpr/YqmCdgc4RO2Rprv0VAsUW25ZbZkQ1ZY6GMTOeN5A011Xo84BzSDxFV84VGXLb5aZ7xBCCYI+bU8SAkPJPGsGLsJU9YZQ6aTkHQurnBhZtxoRUQR6vjG0dAqr8F3Hs+GcVwWS4SObTMA7Q7leOGWC8WcSx6OjnZu3rVzMWOTS65eptYWVLFuVkfQhjJXEb6KZ1qqA1rnSloHQVOw0I1Crzjyyz4XxXDX0zdiJpL3aDn3rvVmaMrrc0QSvEuvHvUbwNTjp8JUZHePYk2o6W9RnHIxu0u/yTwUWg5b4zivkZikk/eNG/U8q30bwCpNjZNeTWrK30Ivk4tmNY67F1PqIi2DXCIiAIiIAiIgCIiAIiIAvi+rVcfYnp7HQSN2/wB65vakHiK+N98KIOc30R9qKJ3zUILqzagWlRvnLeaWjtjImbHVHu2OIcp0Wg2vMu4RVO3U1DjEDxb1+aLrrHN82Tq6Jjw8Bw5jqozla5Xl1eFSvul0JPiaHZiXeLe/tj1Nlybwtq6avqo9C522z0rJ5/44psKYOqZIpg2qYNzfyW6k0uHcNundoxsMQLt6ozwhsZ1GM8by2ygkc+meCNkb+Vd7T8OOLSoLucHUc2WXe5vsYvLfD9dmNmDLXPY6VvVWyHeSN29X9whZ4LPZaanhYGkRNDtBpyKJ+DJl7Fh6x090fCGvmj3nl4lOIGg0W8aAREQBERAEREAXWuve2o/DK7K611721H4ZXmf4s91/kisuKe+Unnu966FFGJZ2sPESF38U98pPPd7107X3WzpCqm1b3P5LVqe1K+CZrFl3aaq1U9RI5+09mp3LuHLOzafSf6FtOFe8FJ+GsorEp0zEdcW4LsV3dqeWrJJTfcjK4ZY27ZJh2yehR9irCNZaXbQhIZyFWOWLxJbae4W2ZszNpwYdlamboOPZButbM28LXciuaVj3RVo6tOnEQt2y0xC+3XQNlkIj0AGpWv4otzrbcXROGmriQsbTSOjnY5p07YKE02TxL013TJtdXDLoafZotfRTCopI5gdQ9uq5lq2Xty69tUUZdqY2aLaVZ+Para1NepWGRU6rHB+hX7Nfv/UdPxWkxfWN6Vu2a/f+o6fitJi+sb0qtNS81L5LL07ysPgn/JvwZd5w+KzuMLcLjbHRka7IJWCyb8GXecPit1nbtQvbztIU/wAGtWYMIv1RAM6x1505L0ZVW9QmC5TxkabLyEs9UaOuZODoQtnzQtRt9x6ps6dVcStMVd5Ncse9x9UyxMayORQpejRZ7BVY2rsFPJtauIWbUZZPXbq8baIu+g3iUmqydOvV+PGSK21Gh0ZEosLC4uuAt9skcTptMI/ks0oyzpuexbGRRO0cHaH0pqOR4GPKY07H8fIjAh27yma4zvJ11eSuxhuiNfcmU4Guqxz3Fzy48ZKkDKK1ma9Q1L26sVc4dLyMhR92WNmXLGx3L2RMmFqYUllp4dNC1q1zNLvZJ5i3ZjGsaGtGgC0nNLvZJ5isLOgoYjivRFe4M3PLUn6sr6eMrdsp++rulaSeMrdsp++rulV9pvmofJYOpeVn8FgKf6hnmhaZnD4Ky9PwW50/1DPNC0zOHwVl6fgrD1Hyk/grzTfNw+Svr/pFfF9f9Ir4quZaKNty6vptV3Y+R+zGNOMqwdsqW1dFFUNOoeNVVBji1wI5CptymxIKuLrOWTdG3QalSvh3UOSXgTfR9iKcRafzx8eC6ruSWtYzI7wO6StnB1AI5VrGZHeB3SVK83y8/gimF5iHyV0uPdsvnLb8q+/VP53xWoXHu2Xzlt+Vffqn874qucDzcfn/AKWNn+Ul8Fg1+J5BFC6Rx0DRqV+1gcaXAUVqmBOhcw6KzLrFXByfoVnTW7JqK9SLM18TST15pqZ+sRGh3qNyS47zqV2blUSVFXI+R2vbH3r92ijfWVbI2DXeFV+XkTy73J+paGJjwxKFFehl8JYZqrzOA2IujB7YjmUu2LL22UkTS7a2vKFmcFWenttrhdFHsvewbRWwKa6ZotNNalYt5MhWp61ddY41vaKMAcKW4s2dkeqtaxHlzb54nSQbRfpqBpyqREXSt0/Htjyyijm1ahkVS5oyZWDE1iqbRVmKWMtCw0b3MeHNJBB1VhczLFBXWiapEeswG4qv9bA6mqHRP4woFq2nvCu2XZ9ie6TqCzad33XclrKXE5ka6mqn6H6LN6llp1APOqtYYrJKW8Uzmu0bt71ZWw1baygZK067gpPw9mu6p1y7ojHEOEqbVZHsz93nuCXzHe5VkxF32qPxCrN3nuCXzHe5VkxF32qPxCtPintA3OF+8zq0EQmqGsdxFTNh3L201lnhqJHO2njfuUO2ju1qstgzwdpvNWnw7jVXzkrI7m3xFk20Ri65bGt/JnZtPpP9CxV2yxoQwup9tzuTcpRRSmekYkltyIi8NXy4vfnZV3EdkqrTVPbLGWxg6ArEA6FTjnLbqc21krWAPJ1J/NQhKNmRw5ioHqmEsS9wXYnml5ry6FN9yUcnLw8VcNvLu13cqmYHUaqu2VD3NxRDoeb3qwkTtKcOPIFLuHbpWYuz9CI8RUqGVuvVGGxndmW20zO29JNnVoVdL7dJ7pWuqJnHU8mqkPOe7vNbHDE/RpGhH5KLOMrgcQZruv8ACT6I7/D+EqaPFa6s5KeF88rY2DUuOgUmYKy9NUxs9wjczlGnMujlLh9lwrnyTx7QZ2wU508TYYmsaNAAAtrQ9HhdHxrV09EauuaxOmXg1Pr6s16kwbbKZga0agc7V+a7Bdsqoy1w03cjVs6KV/oqNuXlWxFP1t++/M9yFMZZfdZMfNRRucwDUkqNaiGSCUxyDRwVsaiGOohdFK3aY7jCgjNWwiiuc1TCzZi5FE9c0eFMfGqXT2JZoesTul4Nr6+5q2G7pNbq+N7HEAuGu9WKwjdmXa2tlY4O2QAVWAHQ6hSxk3d3Rxikc/6TuL818OHs51XeE30Z9+IcFW0+Kl1RMKjTPDuSn6P1UlqNM8O5Kfo/VSrWPJzIro/nIEJO+kelSXkl38/4qNHfSPSpLyS7+f8AFQbR/OQ+Sc6x5OfwTaiIrMKzCIiALjqe5pfMPuXIuOp7ml8w+5YfYzHuitWOe/E34hWEpfrgs3jnvxN+IVhKX64Kqsn9+XyWrjfsR+CyuX/gvS9Cy10mMFvmmHG1uqxOX/gvS9CyGIgTZaoD7Csul7YsWvb/AIVpct8pp+//AErzmBcH197dK5x5RxrA0cD6idkbRrq4Bd3EjXMuLg7j1K4LTUNp6yJ7uIPB/mq0ul4l7c/VlmUx8OhKHoiYMHZfURpWT1QcHFoI3LbY8KW5jdkNHqr84TxBRXC3xMjcGljADq5bA17HcT2noKsPDw8VVLw0mV3mZmU7X4jaNJv+ALZVU73t12gCRoFCeI7TLa6x0UjC0bR2ehWkIBBHIVH2YmC5r1Uxy0Ya3Z49VzdZ0eNtfPTH7v6Olo2sSrs5LpfaQQwlrtQSOhT7lVdzWULKUu16m1aR8l91+0z0f1W9Zc4Yq7FM91QWkEablz9Fw8rGyE5RaT7nQ1rNxcnHajJNrsbwiIpqQoLpXu3xXS2y0UwBZINDqu6iAoDwj8HVeEcYVFyt0T44mu3PjGg41YrgxZiw4iscNsnka2Wmi0Op3kraM98ER4qwtNDHCHzHU8W/iVMcA3yty2zGmoy4xxvqQxwJ5NyAvhmFY47tZpnBodJs9qdN6rfX0L7bcHUUzD2vKVaDCl5or9ZYJ6aQSAxN2unRRbnPhd0bpbrBHvJ5lFOI9O8SP6iC6ruSzhvUfDn+nm+j7EcWS5T2e4xSwPdsueCQFZLBF6N6tbZnM2S0AKsVIWvrIGSnQNeNryKyGW3Y9loDaKQuBA1151ocL2z8WUU/t9je4orh4UZtfd7m2onlK44p4pXuYx2pbxqc7og2xyIiLJgIiIAiIgCIiAIuCqqoKYazP2V9pKmGqj6pA7aavPMt9t+p65Zbb7dDo4luRtlvfM1m0dkqt2Lr7VXy5v6o57GxvI0JVlMQ0tNVW+RtSSGhh4uhVkxfHTUl0lbRuLtXnVRDimVqUev2+xL+Fo1ty6fd7mOZTmqnFLCzVx5lYPK3DUVqtcVW9oD3N7bUbxuUfZQYYfXVkNznj7QHjUrY2vlDhfD00tRKIm9ScGdOm5Z4b03b/wBE18DiPUt//NB/JD3CrzFisdtdaaSYOfUx7PaniKhbgwYFqMQ4mprxXxuliLt7njUca0/EFfXZlZiRwOJkjbUlrdDruV38k8Gx4TwrFRmIMeNDvG/iUwIcbva6OOgoY6WJoaxg0AC7SIgCIiAIiIAiIgC611721H4ZXZXWuve2o/DK8z/Fnuv8kVlxT3yk893vXTtfdbOkLuYp75See73rp2vutnSFVNn7z+S1K/2F8Fm8K94KT8NZRYvCveCk/DWUVp0ftR+EVbf+7L5YX5lbtRuaeUL9IvqfIgbOakEV9aWjQbP6LQG/SHSpTzuA7KNP+hRWONVlrEFDMnt7lm6PNzw4b+xNWSNSZY52OP0R+ik9RJkX/if/AHMpbCm+iScsOO5CNbio5ktiv2a/f+o6fitJi+sb0rds1+/9R0/FaTF9Y3pUE1LzUvkneneVh8E/5N+DLvOHxW8LR8m/Bl3nD4reFYemeUr+CvNT83Z8kbZyWrrqGOZjPqxqdFCDho4jmKtFiqjZVWapBGp6nuVar1SOo618bhpvKifEmNyXKxepLOG8rnpdb9DZcqrl1heS5ztztysDSv6rTRyfabqqq2uofT1kT2H+Me9WWwlXNrLVDo7UtjGq3uGcneEqn6GjxNjbTjavUzD3NYNXHQKvmaNzNTdpqYHVrHKbMYVfWVlkn100VbsQ1HXV1mm112ivXE2TywjUvU88M43NZK1+h0oYzJIGDjKnnKK1iCxxzPbo8EcfGoYwtSuqrzTMA1aX6FWUsFE2hoGwtGg0C0uGcbmsdr9Dd4lyeWtVL1MgtIzS72SeYt3WkZpd7JPMUp1Ly0iLab5mJX08ZW7ZT99XdK0k8ZW7ZT99XdKrvTfNQ+SxNS8rP4LAU/1DPNC0zOHwVl6fgtzp/qGeaFpmcPgrL0/BWHqPlJ/BXmm+bh8lfX/SKz+HLE66Uj3tJ2gdwCwD/pKRcopD1YMIBBd8VXmn0xuvUJdmWHqF0qaHOHdGi3igkt1Y6nkBDhzrtYZuUtvuET2PLQXjXRbznBh98dZNc2x6MPKox3tKzl0TwslxXo+hjEvhm4yk/VdS0eGrpFc7eySNwOy0A6dCxuZHeB3SVHGUmIzSSNoHv+sdynyqRsxXNfh5xB3b1Nqc1ZeBKXrt1ITdhPEz4x9N+hXW492y+ctvyr79U/nfFahce7ZfOW35V9+qfzvioVgebj8/9Jrn+Ul8Fg1HuclUaeiiaD9IKQlF+e3c1L/7nU91iTjhzaIFo8VLMgmQvIdZHHnJW45T0oqsQ7Dm6gAH3rTTxlSNko0dntf9I+KgWlwU8uCfuT3VJuGJNr2JvpWCOnYwcQGi5EbxIrPS2RWDe7CIiyYOrdIRPRvjI1BVbcdQdQxFUMA0AKs2/wCiq55mgDElT0qL8TwTpjL+yUcMTaulH+jWaJ2xVRuHIVYfK6YzYeDidd4VdIjpID5VPeTkrnYdAP2guXw1PbJa/o6nEsN8ZP8As2+89wS+Y73KsmIu+1R+IVZu89wS+Y73KsmIu+1R+IVu8U9oGlwv3mcNo7tarK4NIGHqbf8AwqsdNKYZQ9vGFvNrzFudFRMpowzZYN29c3Q9Qqw5SdnqdLXNPtzIxVfoT3tDnX4knhjGr5GtHlUHyZn3csIAZ6Vi63MK81UZjeGgHmKkE+JMVLpuR+HDeU312NrzgxDBUUzaWF7XFrt+h8qiR52nE865ayplqp3SyuJLuPevxBE+aVscY1ceJQ3PzJZlzsZMsHDjh0qtG6ZR0z5MSwv0Om7f+anuf93QyeRhUfZS4fdS0UVZOzZlGikG4dwz/hn3Kb6JjSoxPu7vqQjW8mN+X9vZdCu2YtUam6nU/RcQtWb9ILOYx17KSeeVhI97x0qCZcnK+TfuTvEio0RS9iwGVlE2C3xzBoBexbwtZy9AFipvMWzKy9Pgo48UvYrTUJueRJv3CIi3DTC0DOOhbJh90gA2iSt/WpZpjXDjtecrR1KCnizT9je02bhlQa9yukjdl5bzLa8tKkx4hpma6AuWsVndL+lZjAry3ElNpzquMSXJkRa9yx8uPPjy39izUbtpuqjbPDuSn6P1Uh25xdStJUeZ4dyU/R+qsHVnvhTZX+kLbNgiEnfSPSpLyS7+f8VGjvpHpUl5Jd/P+Kg+j+ch8k31jyc/gm1ERWYVmEREAXHU9zS+YfcuRcdT3NL5h9yw+xmPdFasc9+JvxCsJS/XBZvHPfib8QrCUv1wVVZP78vktXG/Yj8Flcv/AAXpehZqriE9M+I8ThosLl/4L0vQs+rNxVvjwX9IrLKe18n/AGyvWaVnlob25zIyY9D2wG5aWNxVmcX4ep7zRPY9urncwUH4kwfcbdUPLYD1EHcVCNY0qym12QW8WTfRtVruqVc3tJGFt12raJ4MVRI0DkBW4WnMaqowBJG+TTnK0KWN0bi140IX5XKpzb8d/ZLY6t2FRkL747k5WjMqGoa0SxNZrzrb7biC21kYPXUQJ5NVV8OcOJxH5ruUFzqqN4dHI7d/qK7WNxJdDpYtziZPDdM1vW9i1MT4pW7Ubg4c4X7AA5FCuCswqiKVlPXPa2HlOqmC2VsVdSsnidtNcNQVK8HUacyO8O5Fc7TrsOW010O0iIugc8IiID8yND2Fp5RoqecLHLgW+aO90VPpI9/VC5o15VcVa5j/AA/TX6xVEE8THuETg3UcqArTwRcy9mA2O5zEzulLGanTQAq0+ILfDdbc6B4D26FeemK7XX5a5jw1bRLHG2Vz9niBBOqu5kjjGmxXg+mrDMzq8nGzXfxLzOCnFxfZnqE3CSku6IWxhaZbNeJ9ppDXP7Tcu9gzFNdZa2Nkkx6gTqQFK2bmGGXKiE8MYDoxtHQcagZrXMe+KVpa5riBr0qtc/Gs03K3g9l3RZWBk16li7TW77Mne75g0hsQmgcWyHXlUX0eO7zS3SaZ1U4xOfqBoeJa2OrfRMriz7Ou5fotaRvaCsZWr5ORJS322M4ukY2PGUdt9ya8IZm0NYWU04eZXcpUkUc7amBszPolVPswMN7hn29hreNWEwlie29jYoZKuIOHOVJdD1ad6cb5LoRvXNIhQ1OhPqbkvyXsHG9vpWJud7oGWyeeKqjc5rCQAeNQpcsyq1tY5jIXlocRuK6mdq1GHtzvucrB0m/M35FtsWB24/vGelfQQeJwPQVXZ2ZdeNP3EnpUj5WYr7NRzGqPUtgbtpfDE13HyrVXHuz75ehZGLU7JdkSHotTxhjGiscThKCXDUbitgkutvjHb1cbekqBs35o6qtkdT1QkBdxA+Ve9Yz3i0OVbW550fAjlZCjansdDE2ObndJ3daVDmMB3a6rKZfY8qbdUMp7jM57NdStEiaGsG7fovrm6729qedQOGoZMLfF5upO56fjSq8Hl6Eo5h5gtq6HqVte5jtdD0KOcPUNTe73CXavDpO23LHybbS1pcXlx0UzZMYaEMD6mdm89s3ULbp8bV8tKx9DUu8HSMRutdSQMK2mGy2tsGjWDceNVO4W2Yz62b9n7fMRLHMGu0OvG5T7n7janwrg6qlZO0VDBuYDv4lTHAVhr8x8wZK6Tqr2GRshB3jcdVY1dca4qEeyK5sslZJzl3ZM3BMy4EjZLxXwayh3VGuI05VbVo0aBzBYPBVlp7LY6anhiawiJodoONZ1ezwEREAREQBERAEREAXWuve2o/DK7K611721H4ZXmf4s91/kisuKe+Unnu966dr7rZ0hdzFPfKTz3e9dO191s6Qqps/efyWpX+wvgs3hXvBSfhrKLF4V7wUn4ayitOj9qPwirb/3ZfLCE6DVFx1TxHTSPPEG6r6N7Lc+aW72IZztnabu1o49lRgONblmtWtq74HMcCACNy06Pe9o5yqx1WzxMubXuWdpVfh4kE/Yl7IppPXP/uZS0o7ydoTTUskhbptt1UiKd6NBww4pkE1manmSaK/Zr9/6jp+K0mL6xvSt2zX7/wBR0/FaTF9Y3pUC1LzUvknuneVh8E/5N+DLvOHxW8LR8m/Bl3nD4reFYemeUr+CvNT83Z8n4njEsLozxOGigPNu2GlvpcxujNCp/Ud5u2oS2uatDdXALT13G8fFbXddTc0LJ8DKSfZ9CC2HZe13MdVN2TF0FTRzRvd9EaDVQi4Fp0I0K3jK66Chqthz9lrnb1D9FyPAyk32JhrWP4+K0u5veb11EVqmow7RxCgxxLnanjW95vXMVF9LIn7TC3jC0aBu3MxvO4D+azrWQ78p/wBdDGi4/gYq/vqSFlBaevJzUlv1TtVObRo0DyLSsq7V1hbXOLdOqNBW7KZ6LjeBix37shms5Pj5UmuyC0jNLvZJ5i3daRml3sk8xbGpeWka+m+ZiV9PGVu2U/fV3StJPGVu2U/fV3Sq703zUPksTUvKz+CwFP8AUM80LTM4fBWXp+C3On+oZ5oWmZw+CsvT8FYeo+Un8Feab5uHyV9f9IqQso+6m+co9f8ASKkHKPutnnKAaV5qJP8AVfKyJhxRamXa2upntDgdeNVyxRbn2+5zxFpDWu0G5WjPEozzaw4KmmbPTx9sO2cWhSzX9P8AHq8WK6oiegah4FvhSfRkN2yqfR1jKiM6OadxUyR3XstgiPqkgMp111PkUKSsMcjmHkJCyVBeailhEQc4sHJruUTwM543NF9miWZ+CsnllHumdS6N2bhM3mcttyr79U/nfFaZUSGWZ0h43HVbnlX36p/O+K86e98uLXues9bYsk/YsGowz0Y59NTFvJ/VSetJzVojVW4ODddhuqn+rVuzEnFEA0mxV5cJMr476R6Vv+TFQGYiLT9kfFaFMNJXjmcVn8BXAW68iUnTXQKvdPsVWTCT9GWFqFbtxZxXqiy7DqwHnX1dW0ztqLfDK0g7TdV2laMXzJMq2S5W0wiIvRg/E7gyMuPEq4ZkTCTE1TpzqfMV1jaKzSzl2myq3YlqhV3eacHUOUT4nuXJGv1JZwxS+eVnodCAazNHlVgMoYgzDY3b9QoFtcfVbhDGP4naKx2AKQ0dkEZGmuhWjwzW3e5exvcTWJUKPuZW89wS+Y73KsmIu+1R+IVZu89wS+Y73KsmIu+1R+IVt8U9oGpwv3mY4Ak6Bc7aOoc3aEUhHkaV+7W0Pq2tcNQrC4SstvlsNO99LEXEbyQuHpmmPObSe2x3NT1NYKTa33K8dZVP3MnqFfplvqncUMnqFWa7AW3xSH1VyRWS2MHccJ/4rsLhaXrM474pj6QK52/DNfWOAYxzdedqkbBOX0lO9s9c1r9DqFJsdvoYzqyljb0BdlrWtGjQAF0sPh6miSlN7s5uZxDdfHlgtkcdLTxU0QjhbstHIvzcO4Z/wz7lzr8VDdqCRvO0hd9raOyOAm+bdlZsaMcy6SbX2ysGzc4dK3TNWiNLdG9rptHVaUONVZmwdeRKL9y08Gasx4yXsWOy4mD7LTtHGGLa1GGTt2ZO0073AbDdApPG8ahWLplqtxotFdanU6smSYREXQOeFp2bErY8NuJPKVuKinOW6tNJJQhw2gTuXO1a1VYs2/Y6OlUu3Kgl7kQVR2p3nnKzuX8XVMS0u7lWvE6nVb1lTQOmu0NRodGuVe4EHZkxS9yws6arxpN+xPNGzYgDVHWeHclP0fqpLA0UaZ4dyU/R+qn+rrbCmiAaQ982DISd9I9KkvJLv5/xUaO+kelSXkl38/4qD6P5yHyTjWPJz+CbURFZhWYREQBcdT3NL5h9y5Fx1Pc0vmH3LD7GY90Vqxz34m/EKwlL9cFm8c9+JvxCsJS/XBVVk/vy+S1cb9iPwWVy/wDBel6Fn1gMv/Bel6F2b/eI7Uzafpxa71ZdFka8aMpdtkVpfCVmTKMe+7MsupXW+lrWbFRHthaNUZkwx67MbXaLI4Qxqy+Vr6cxtj2Rxr4x1HFtkq+bds+0tOyqouzl2SPze8B22qOtPTNa5aZecsa7Rz6csa1TQ06gEcq+OAcNCNQvnkaPi3947fB9MfWMqjtLf5K03XCVxt4JkBdpzNWAlikjcQ9jm6c40VrZ6CkmaRJTxu15wo1zNwpTiB1XA1sYY3UhoUd1Dh50wdlT6IkWn8Qq6artXVkMgkHUKX8nsQySyOpZ5NWRt3A9CiBw0JC2bAlS+mqpHMJ3jkXI0rIlRkxaOvqmPG/GkmWTREVnFYhERAEI1GhREBXvhWZdRX+1z3lkOr4I9AQPIoR4L+OZsM4vislwm6nTRgcZ/JXlvlviulslop2hzJBoQVRDhEYLqsIYvnu9tjMMQduLW8xQF7oZIbrZxKzR0c8e4+RQJmhhKrobuJaGHWM6uJWT4OeaFDe7FT22onayWniDXGR2mp/NS9Xusda3WpqKV+o+9auXqmmRz6+V9GvU6ml6nLAt5l1XsVfbQXMt1MS+9YXL7pWO7H4UaNNuk9s1fOscJ/bpPbNUe+lLP5kh+q6/4Fcjb7mR9UkdFeo3axtd6SrG9Y4T+3Se2avvWeFB/eUntmp9KWfzH1XX/Ar8yqxOIzD1PVhGh7Yrputd1e7aMI1Ksb1phT7yk9s1fetcK/eUntmr3Phi2f5WHlcU1R/GvYribRdT/chZG1y4jtLXCkhHbce8qfetsLfeUntmp1thX7yk9s1K+F7K3zRs2ZifFFc1tKvdEB1Vfi6pOkkWgPM4/oug+3XuV21JFqT5SrF9b4W+8pPbNTrfC33lJ7Zq9WcNW2flYI8T1Q/GvYrn2Ju/3KG1Xcf3KsZ1DC33lJ7ZqGDC33lJ7Zq+f0pL+Z6+q4/wIJwdhW6XO6tbUQdo1wKsG0Q2HDbp3aMbBEC4rhop8PUTi+nnpWHT75qhnhM5n09ptD7ZRVAc6pj2f3btr3Lu6VpMcCL67tnD1XVpZ8l02SIF4RmM6nGGNpLbQSdUpngg6HyqxPBcy9p8PWanu5i0lmj0Oo8igHg1YHqcS4op7tcozLCXb9RzlXrs9DDbbfHRwMDI4xoAuucc7Y3bgiIgCIiAIiIAiIgCIiALrXXvbUfhldlda7d7aj8MrzP8We6/yRWXFPfKTz3e9dO191s6Qu5invlJ57vesXE8xvDmnQhVRa9rm/7LVpW9KX9FpMK6dgKP8NZNVxo8a3anp2QsqnBrRoAuX9vLx425TKriTHjBRafQh1nDeRKbkmupYaWVkY1cdFp2N8W0NFQyQsm7dzSNFEFXjS9y6gVjtCsHXXCqrXbVRIXlauZxKpwcao9Taw+GnGalbI/Nxqn1dS+R511cdFz2Ghlr69kUTdoggrqQQyTPDWMcSeYKYcqsJOg2LjUMGy4cRG9cHAw55l6Xp6ne1DMhh0N+vob9hagZRWmnaBo7YGqyy+MaGNDW7gOJfVZlcFCKivQrOybnJyfqV+zX7/1HT8VpMX1jelbtmv3/AKjp+K0mL6xvSqx1LzUvks7TvKw+Cf8AJvwZd5w+K3haPk34Mu84fFbwrD0zylfwV5qfm7PkLFYrouv7PLT6a7Syq+OaHDQ8S27IKcXF+pqVzcJKS9CrOJaXrO8TU+mmyV06Wpkp3B0Z0IW75r2k01xlrNnQPctCVW5lUse+Uf7LSw7Y5FEZHPW1UlXL1SU6uWRwpbnXC5Rta3XZeD/NYcKT8lrVt3N80rdWluo3eRe9PoeTkxi/VnjUL1jY0pL0RL1ngEFugYBpowBdxfGNDWho4gvqtCMeWKRV8pczbC0jNLvZJ5i3daRml3tk8xaepeWkbmm+ZiV9PGVu2U/fV3StJPGVu2U/fV3Sq703zUPksTUvKz+CwFP9QzzQtMzh8FZen4Lc6f6hnmhaXnD4Ky9PwVh6j5SfwV5pvm4fJX5/0ipByj7rZ5yj5/0ipByj7rZ5ygGleaiT/VfKyJ3XBcIG1NJLE4A7TSFzorNaTWzKyTae6K55i4fNnuZDGENeS7071qSsZmNY4rla5p+p7UrW9qVXuvpZKOoMMgIcPIq51rA/S3tx/FljaLnrKoSk/uR11u2Vffqn874rSVu2Vffun874rU03zMPk29S8tL4LBroX6lFXbJ49NSWEBd9CARoeJWhOKlFxZV8JOMlJFXcVWuW2XF8crNkucSFionljw4HQg6qdszMKivp5KyFg2mjdzqD66klpJjHIxwI5wq11TAlh3NenoWVpefDLpT9fUl/LLGcT4etK+UN2Rss3qTqeZk7A+M6gqp9NUS07w+J2y4HULbrFjq4UcYZPUOcAuxpnECrgq7vT1OPqfD7sm7KfX0LDLgrKqGljMkztloGpUPOzL1i2Q5+1+a1q/wCNLlX9rHUODDxhdO/iLGhHeHVnMo4dyZy2n0Rs+aOMG1RkoKOUOhcN6iwkk6lfuaV8r9p51K7lmtk9wqmxRMdxjfooblZNuddzPuyZYuNVg08q7IzWX1mluN1imYzabG/UqxdJE2GBrGjiAWr4Aw0y0UQe9g2pG6rbVOtFwHiU/d3ZBdaz/wBXf9vZHSvPcEvmO9yrJiLvtUfiFWbvPcEvmO9yrJiLvtUfiFcnintA63C/eZw2ju1qstgzwdpvNVabR3Y1WWwZ4O03mr5cL/nP4PpxR+EDMIiKaEMCIiAIiICNM4LG+sZ14xmojbvKhFwIOhVr7pRsraOSB7dQ8aKBcw8Ly22vkkhjPUhyAKF8Q6dJT8eC6PuTTh7UYuPgTfVdjCYTvU9nr2viOjXOG1v5FYLDWIaK6UrDFLtO2QD0qshBad4II51lLNfa+2SAwTFjdd4C52lavLCfLLrE6Oq6RHNXNHpItIhOg1UH2/MeaJgE8j3H818uGY80sZEEj2khSj6hxeXfci/09lc22xKWKcRUlpo5CZdJQNWhV/xbeZbxdJKl7tdryrhu18uFxeTUTl4KxjWlx0AJPkUW1XVpZr5Y9Ikp0rSI4S5pdZH6hjMsrWNGpcdApxygsjqS1mSoZsv11C0fLrCc9yqxNIzRrCHdsNFO1DSx0tOyKNuzo0ArqcPadLm8ea+Dl8Q6jHl8CD+TnUaZ4dyU/R+qktRpnh3JT9H6rv6x5OZwNH85AhJ30j0qTMku/f8Ax/VRm76R6Vk7Feaq1T9VppSx2nGFX+BkRx8iNkuyLAz8eWRjyrj3ZaVFXb9vLz425P28vPjblL/qbG9mRD6Zyf5IsSirt+3l58bchx5edO63J9TY38WPpnJ/kixIOq46nuaXzD7lE2XWKbhcLpFBUTueHFSzU9zS+Yfcuvh5sMypzgcjMwp4dqhMrVjnvxN+IVhKX64LN4578TfiFYSl+tCrbJ/fl8lk437Efgsrl/4L0vQujmPbeu7VNMNdY2a7l3sv/Bel6Fl7jTiqopacjUPborHjUrsNQfqv+FcStdOY5r0f/SqM222RwJPGeVZnCF4ktVwbKx2gc4A7+RZXMXDslsuj+pxkM3ncFp+9ruYhVzZCzEv2fdFjVzry6N12ZaTDt2prlQxvgftENG10rKKs1hxRcLY4COdzWcoW302ZRYwCR7yfzUxxeIqJQXidGQ7K4dvjN+H1RNRIAJPEFHWaWIaeCkfRtkGsjdNFp1yzEqZmEQSvbqFpN1uVVcZuqVMheddy1NS1+udTrp9Tb03QLIWKy70Ok76RW15d0T6yslawa6D4LVWse86NaXHyBTdlLht1HCK2Zu6Vu4LhaRiyyMlJdl3O7q+VHHx233fYkpERWYVmEREAREQBRrn1gyHFOE5KaOBpmJJ2gN6kpfHAEaEAhAebtThTHGHb1UstlFXhjX6AxnTVdx1bmg5uz1ldhpu+kP1V/wCe1UD5XOdTsJJ39qFx9h7d4tH6oQHn85+aDv8ADXYf8v6r5/8AKHi929b+q9A+xFv8Wj9UJ2It/i0fqhAefn/yh4vdvW/qvn/yh4vdvW/qvQTsRb/Fo/VCdiLf4tH6oQHn3pmh4vdvW/qmmaHi929b+q9BOxFv8Wj9UJ2It/i0fqhAefemZ/i929YfqvmmZ/i929b+q9BexFv8Wj9UJ2It/i0fqhAefWzmh4vdvWH6ps5n+L3b1h+q9BexFv8AFo/VCdiLf4tH6oQHn1s5n+L3b1h+qFuZ/i929YfqvQXsRb/Fo/VCdiLf4tH6oQHnzsZn+L3b1v6r5bMIY2v97pYrpRV7mOfoXSb9F6D9iLf4tH6oXJT2qhjka5lOwEHd2oQGpZHYMgwphWOldE3qoIO0Rv4lIi+NAA0AAX1AEREAREQBERAEREAREQBda6NLrdO1o1JYdF2UcNQQViS3TRmL2aZWzEdjuj7hIWUUrgXneB5VjOwF38Qm/krNPpIHO1MbfQvnWdP9230BRSfDUJScucldfEs4RUeQrN2Au/iE38k7AXfxCb0KzPWdP9230BOs6f7tvoC8fTEP5nv6nn/BFaI8PXdx06wm9CzVqwRX1TgJYZIwedWAjpYGu1EbfQuw1jANzWj8l9quGaU95SbPjbxNc1tGOxHuEMvqe3uZPM8SEb9HBSBBDHDGGRsDWjiAXIikGNiVY0eWtbEfycu3JlzWPcIiLZNYgnM603Covs8kNLI9pO4hahHYbvtj+wzcfMrNzU8MjiXsBPQvx1nT7v3bfQovk8PQutdnP3JRj8QzpqUOTsazlHSz0mHDHURujdtDcfzW5rjgjZGzRgAC5FIcWlUUxrT7EeybnfbKx+oREX3PgaHm3ZX3G0tEEZc8O13KFpMP3ZsjmihmIB5laORrXt0cAQup1nTlx/dt9C4Go6HDLt8Tm2Z39O1ueJV4fLuis7LBdy7TrCb0KecurR1haIJXs2ZC3eDxrPijpwfq2+hduNoa0Bo0C9abosMOxz5tzzqWtTzK1Dl2P0iIu6cILTcyqaeot8jYY3POzyLclxzRseNHAFfDJp8atw37n3xrvBsU0uxV02G76n+wTehbhlhabhT3Nzp6WRg14yFNIo6f7tvoX7hpoY3atYAehR7G4ehTapqfYkOTxFO6pw5O5zwDSFgP2QtQzZpZ6vDMkUEbnu1O4LchxLjnY2Rmy8AhSDJoV1Mq2+6I/jXOm6NiXZlXXWG76n+wzehb3lba6+nqmGemkjAdyqXus6fX6tvoXJBTxRntGAfkuBi8PwotVinvsd7K4gnfU63Dbc7KIik5GT8ysbIwseAQeQqGc0cJzmulrqSFzteJrQpoXHURMkZo9oI6Fo6hgwzKuSRvafnTw7eeJV3sDd/EJvQtvy1tFwp7zA+alkY0O36qaus6f7tvoX7hpoY3AtYAehcXG4dhTap8/Y7WRxFO6tw5O52kRFKCLn5kYyRpa9oc08hWjY0wLTXRr5Yi2Nx36NC3tFr5OLXkQ5LFubGNlWY8+et7Fbb5g+40MhbFTSyNB4wsJJa6+M6PpZB+StPUwxSNIexp3cywFbY7dM8l8Ki+Tw3BPeEiUY3Ek2tpxK59Y1f3D1yxWm4yHRlJI7oCnsYbtOuvUP5rIW+zW+B2scIC1q+HXJ7OZsz4iUVuoEL4fwRXXBzRPDJCDylS5g7CFLZ4mPcGSO05QtphijY3RrGj8lyKQ4OjUYr5u7I9nazflLl7INAaAANAERF2DjnTu7XPopWtGpLD7lXK+WK6uulQ5tFK4GQkHRWYcARoV1HUlO46mNup8i5GqaZHO5d5bbHX0vU5YPNtHfcrdbLFdhVNJoZQOhWHwhE+GwU8cjS1wG8FdoUlOHaiNvoXajaGtAA0C86XpUcGTalvuetU1WWdFJx22P0iIuycYIiIAiIgC6F3tdNcYDHLGwk8pC76LzKCmtpHqE3B7x7kMYty7dFI+emc5+1v2WrQaywXSneQ6jlAB49FaRzQRvAKx1xoKWcfvIgfyUczOHabHzQexI8PiK6tKM1uVhdb6xvHTvCNt9Y7ip3lWCmw7anHfB/NfYMPWtjtWwLk/Tz325zrfUK2/Agmhw/dKmQNFHLoeXRb/hHLsySsnqXFn+lylO30NLA3SOID8lkAAOIALrYfD1NbUpvc5OZxDdYnGC2Ora7fT0FMyKGNjS0aEgca7aIpJGKitkRuUnJ7sKOs5qKprKanFNE6Qgb9PzUiriqImSgB7QVrZmOsil1t7bmzh5DxrlYlvsVeNhu+0f7BNx8ydgLv4hN/JWZFHT/dt9CdZ0/3bfQFGvpiH8yS/U8/4IrN2Au/iE38k7AXfxCb+Ssz1nT/AHbfQE6zp/u2+gJ9MQ/mPqef8EVm7AXfxCb+SdgLv4hN6ArM9Z0/3bfQE6zp/u2+hPpiH8x9Tz/giHcrbTX014gknpZIwDvJU11IJp5AOMsPuXFBTwxuBYwD8l2TxLv6dgrEq8NPc4Go5zy7fEa2K64xstzluszo6OV4LydQFhoLDduqD+wzD8lZiSlgcdXRgnoX5FHT6/Vt9C4lnDcJzcuc7VXEk4QUeQx+BIZIMNUscrS1wG8FZ1fmJoawBo0C/Sk9UPDgoexGbZ+JNz9zEYjsdNeKR8MjWBzv4iN6hvFeAqqile+lY+Ya/wAKntfl7GuB1aD+S0M/SqcxbyWz9zfwNVuw3tHqvYqvPZ7lC4h9JI3pC4TQVYO+B6spc7TQ1DtZIQehYt+HLUXamD+ajVnDvK9lMktfEXMt3AgBtvrXcVO8rvW/Dt0qZGt6zlDSePRTrBh61sILYFnbfRU0DNI42j8l9KOHFJ/dM+d/EjivtgRvgnL5sb2VVUd/KxwUo0dPHTQNijaAGjkXMABxABFKMPBqxI8taIvmZ1uXLmsZ/9k=" alt="Prefeitura de Divinópolis">
+  </div>
+  <div class="header-titulo">Trilha do Estagiário</div>
+  <div class="header-right">SEPLAG · Recursos Humanos<br>Divinópolis, MG</div>
+</header>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- TELA 1: HOME                            -->
+<!-- ═══════════════════════════════════════ -->
+<div id="tela-home" class="screen ativa">
+  <div class="hero">
+    <div class="hero-badge">🎓 Portal do Estagiário</div>
+    <h1>Bem-vindo à <span>Trilha do Estagiário</span></h1>
+    <p>Seu guia completo para iniciar ou acompanhar seu estágio na Prefeitura de Divinópolis. Siga a trilha e chegue lá.</p>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <span class="hero-stat-num">10</span>
+        <div class="hero-stat-label">Passos guiados</div>
+      </div>
+      <div class="hero-divider"></div>
+      <div class="hero-stat">
+        <span class="hero-stat-num">7</span>
+        <div class="hero-stat-label">Dias para enviar docs</div>
+      </div>
+      <div class="hero-divider"></div>
+      <div class="hero-stat">
+        <span class="hero-stat-num">100%</span>
+        <div class="hero-stat-label">Digital</div>
+      </div>
+    </div>
+    <button class="btn-primary" onclick="ir('tela-modalidade')">
+      Começar minha trilha →
+    </button>
+    <div class="aviso-betha">
+      <div class="aviso-betha-icon">🚫</div>
+      <p><strong>Documentos NÃO são aceitos por WhatsApp ou e-mail.</strong> O envio ocorre exclusivamente pela Plataforma Betha. Envios por outros canais não têm validade.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Como funciona</div>
+    <div class="section-sub">O processo é simples quando você sabe por onde começar</div>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-num">1</div>
+        <h3>Escolha sua modalidade</h3>
+        <p>Curricular obrigatório ou extracurricular remunerado — cada um tem um fluxo específico.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">2</div>
+        <h3>Siga a trilha guiada</h3>
+        <p>Passo a passo com vídeos, documentos para baixar e orientações claras sobre cada etapa.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">3</div>
+        <h3>Acompanhe seu processo</h3>
+        <p>Acesse pelo número do protocolo ou CPF e veja em tempo real o status de cada etapa.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- TELA 2: ESCOLHA DE MODALIDADE          -->
+<!-- ═══════════════════════════════════════ -->
+<div id="tela-modalidade" class="screen">
+  <div class="hub-header">
+    <button class="btn-voltar" onclick="ir('tela-home')">← Voltar</button>
+    <div class="hub-title">Qual é o seu tipo de estágio?</div>
+    <div class="hub-sub">Selecione a modalidade correspondente ao seu caso para acessar a trilha correta</div>
+  </div>
+  <div class="modalidade-cards" style="max-width:860px;margin:40px auto;padding:0 40px;display:grid;grid-template-columns:1fr 1fr;gap:24px;">
+    <div class="mod-card" onclick="ir('tela-hub-curricular')">
+      <div class="mod-card-icon azul">📚</div>
+      <span class="mod-tag azul-tag">Sem remuneração</span>
+      <h3>Estágio Curricular Obrigatório</h3>
+      <p>Exigido pelo seu curso como requisito para conclusão. A solicitação é feita pela sua Instituição de Ensino junto à Prefeitura.</p>
+      <div class="mod-card-cta">Acessar trilha curricular →</div>
+    </div>
+    <div class="mod-card" onclick="ir('tela-hub-extra')">
+      <div class="mod-card-icon laranja">💼</div>
+      <span class="mod-tag verde">Remunerado</span>
+      <h3>Estágio Extracurricular Remunerado</h3>
+      <p>Modalidade voluntária com bolsa mensal. Candidatura pelo portal de serviços. Convocação por critérios de seleção.</p>
+      <div class="mod-card-cta">Acessar trilha extracurricular →</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- TELA 3A: HUB CURRICULAR                -->
+<!-- ═══════════════════════════════════════ -->
+<div id="tela-hub-curricular" class="screen">
+  <div class="hub-header">
+    <button class="btn-voltar" onclick="ir('tela-modalidade')">← Voltar</button>
+    <div class="hub-breadcrumb">Início <span class="sep">›</span> <span>Estágio Curricular Obrigatório</span></div>
+    <div class="hub-title">Estágio Curricular Obrigatório</div>
+    <div class="hub-sub">Você é novo no processo ou já tem um protocolo em andamento?</div>
+  </div>
+  <div class="hub-opcoes">
+    <div class="hub-card" onclick="ir('tela-trilha-curricular')">
+      <div class="hub-card-icon azul-bg">🗺️</div>
+      <h3>Trilha do Estágio</h3>
+      <p>Quero entender o processo, ver o passo a passo e saber o que preciso fazer para iniciar meu estágio.</p>
+      <button class="btn-entrar">Seguir a trilha →</button>
+    </div>
+    <div class="hub-card" onclick="ir('tela-acompanhar')">
+      <div class="hub-card-icon verde-bg">🔍</div>
+      <h3>Acompanhar meu processo</h3>
+      <p>Já abri meu protocolo e quero consultar o status, ver pendências ou acompanhar as assinaturas do meu TCE.</p>
+      <button class="btn-entrar">Acompanhar →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- TELA 3B: HUB EXTRACURRICULAR           -->
+<!-- ═══════════════════════════════════════ -->
+<div id="tela-hub-extra" class="screen">
+  <div class="hub-header">
+    <button class="btn-voltar" onclick="ir('tela-modalidade')">← Voltar</button>
+    <div class="hub-breadcrumb">Início <span class="sep">›</span> <span>Estágio Extracurricular</span></div>
+    <div class="hub-title">Estágio Extracurricular Remunerado</div>
+    <div class="hub-sub">Você é novo no processo ou já tem um protocolo em andamento?</div>
+  </div>
+  <div class="hub-opcoes">
+    <div class="hub-card" onclick="ir('tela-trilha-extra')">
+      <div class="hub-card-icon azul-bg">🗺️</div>
+      <h3>Trilha do Estágio</h3>
+      <p>Quero me inscrever, entender o processo de convocação, ver as vagas disponíveis e saber o que preciso fazer.</p>
+      <button class="btn-entrar">Seguir a trilha →</button>
+    </div>
+    <div class="hub-card" onclick="ir('tela-acompanhar')">
+      <div class="hub-card-icon verde-bg">🔍</div>
+      <h3>Acompanhar meu processo</h3>
+      <p>Já abri meu protocolo e quero consultar o status, ver pendências ou acompanhar as assinaturas do meu TCE.</p>
+      <button class="btn-entrar">Acompanhar →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- TELA 4A: TRILHA CURRICULAR             -->
+<!-- ═══════════════════════════════════════ -->
+<div id="tela-trilha-curricular" class="screen">
+  <div class="hub-header">
+    <button class="btn-voltar" onclick="ir('tela-hub-curricular')">← Voltar</button>
+    <div class="hub-breadcrumb">Início <span class="sep">›</span> Curricular <span class="sep">›</span> <span>Trilha</span></div>
+    <div class="hub-title">Trilha do Estágio Curricular Obrigatório</div>
+    <div class="hub-sub">Siga cada passo com atenção. Clique em cada etapa para ver os detalhes.</div>
+  </div>
+  <div class="trilha-container">
+    <div class="trilha-intro">
+      <h2>📚 O que é o Estágio Curricular Obrigatório?</h2>
+      <p>É uma modalidade de estágio vinculada à sua grade curricular — exigida pelo seu curso como requisito para conclusão. Não há remuneração em bolsa. O seguro de vida é de responsabilidade da sua Instituição de Ensino (IES). A solicitação de abertura do estágio é feita pela IES junto à Prefeitura de Divinópolis, e não pelo aluno diretamente.</p>
+      <div class="alerta amarelo" style="margin-top:14px">
+        <span class="alerta-icon">⏰</span>
+        <div><strong>Atenção ao prazo:</strong> Envie sua documentação com antecedência mínima de 15 dias antes da data prevista para início das atividades. O TCE precisa estar assinado por todas as partes antes de você começar.</div>
+      </div>
+    </div>
+
+    <!-- PASSO 1 -->
+    <div class="passo" onclick="togglePasso(this)">
+      <div class="passo-header">
+        <div class="passo-num">1</div>
+        <div class="passo-info">
+          <h3>Verificar o convênio da sua IES</h3>
+          <span>Pré-requisito obrigatório</span>
+        </div>
+        <div class="passo-chevron">⌄</div>
+      </div>
+      <div class="passo-body">
+        <p>Para realizar o estágio curricular na Prefeitura de Divinópolis, sua Instituição de Ensino precisa ter convênio vigente com a PMD. Sem convênio, o processo não pode avançar.</p>
+        <div class="alerta vermelho">
+          <span class="alerta-icon">🚫</span>
+          <div><strong>Se sua IES não tem convênio:</strong> Procure a Coordenadoria de Estágios da sua instituição e solicite que seja feita a parceria com a Prefeitura. Esse processo leva tempo — não deixe para a última hora.</div>
+        </div>
+        <p>Em caso de dúvida, entre em contato com o RH da SEPLAG: <strong>(37) 3229-8154</strong> ou <strong>semad.contratacao@divinopolis.mg.gov.br</strong></p>
+      </div>
+    </div>
+
+    <!-- PASSO 2 -->
+    <div class="passo" onclick="togglePasso(this)">
+      <div class="passo-header">
+        <div class="passo-num">2</div>
+        <div class="passo-info">
+          <h3>Requerer sua Autorização de Estágio</h3>
+          <span>Responsabilidade da IES junto à Prefeitura</span>
+        </div>
+        <div class="passo-chevron">⌄</div>
+      </div>
+      <div class="passo-body">
+        <p>A solicitação formal de abertura do estágio curricular é feita pela sua IES, que envia a lista de alunos para a secretaria correspondente da Prefeitura. A secretaria então escala e despacha a Autorização para o Estágio.</p>
+        <div class="alerta azul">
+          <span class="alerta-icon">ℹ️</span>
+          <div><strong>O que você precisa fazer:</strong> Solicitar à coordenadoria de estágios da sua IES que inicie o processo junto à PMD. Algumas IES também exigem a abertura de solicitação nas suas próprias plataformas digitais para analisar e assinar os termos.</div>
+        </div>
+        <p style="margin-top:12px">Após a autorização, você receberá o número do processo e as orientações para os próximos passos.</p>
+      </div>
+    </div>
+
+    <!-- PASSO 3 -->
+    <div class="passo" onclick="togglePasso(this)">
+      <div class="passo-header">
+        <div class="passo-num laranja">3</div>
+        <div class="passo-info">
+          <h3>Separar os documentos necessários</h3>
+          <span>Checklist completo</span>
+        </div>
+        <div class="passo-chevron">⌄</div>
+      </div>
+      <div class="passo-body">
+        <p>Reúna todos os documentos abaixo antes de abrir seu protocolo no Betha. Documentos incompletos ou incorretos geram retrabalho e atraso no seu processo.</p>
+        <div class="doc-list" id="docs-curricular">
+          <div class="doc-item"><div class="doc-check" onclick="marcarDoc(this)"></div><div class="doc-info"><h4>RG e CPF</h4><p>Foto legível, documento válido. O CPF pode constar no próprio RG.</p></div></div>
+          <div class="doc-item"><div class="doc-check" onclick="marcarDoc(this)"></div><div class="doc-info"><h4>Título de eleitor</h4><p>Exigido para maiores de 18 anos.</p></div></div>
+          <div class="doc-item"><div class="doc-check" onclick="marcarDoc(this)"></div><div class="doc-info"><h4>Comprovante de residência</h4><p>Somente conta de água ou energia elétrica — máximo 30 dias.</p><p class="erro">⚠ Não são aceitos: extrato bancário, boleto, fatura de cartão.</p></div></div>
+          <div class="doc-item"><div class="doc-check" onclick="marcarDoc(this)"></div><div class="doc-info"><h4>Declaração de matrícula ativa</h4><p>Emitida e assinada pela sua IES, referente ao período letivo vigente.</p><p class="erro">⚠ Erro comum: enviar histórico escolar no lugar da declaração de matrícula.</p></div></div>
+          <div class="doc-item"><div class="doc-check" onclick="marcarDoc(this)"></div><div class="doc-info"><h4>Apólice de seguro (fornecida pela IES)</h4><p>A IES é responsável pelo seguro no estágio curricular. Solicite à secretaria da sua instituição.</p></div></div>
+          <div class="doc-item"><div class="doc-check" onclick="marcarDoc(this)"></div><div class="doc-info"><h4>Autorização para Estágio</h4><p>Emitida e assinada pela Secretaria detentora da vaga.</p></div></div>
+        </div>
+        <div class="progress-wrap" style="margin-top:16px">
+          <div class="progress-label"><span>Documentos reunidos</span><span id="pct-curr">0%</span></div>
+          <div class="progress-bar"><div class="progress-fill" id="fill-curr" style="width:0%"></div></div>
+        </div>
+        <div class="alerta vermelho" style="margin-top:14px">
+          <span class="alerta-icon">🚫</span>
+          <div><strong>Não envie por WhatsApp ou e-mail.</strong> O envio é exclusivamente pela Plataforma Betha.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PASSO 4 -->
+    <div class="passo" onclick="togglePasso(this)">
+      <div class="passo-header">
+        <div class="passo-num">4</div>
+        <div class="passo-info">
+          <h3>Cadastro e validação na Plataforma Betha</h3>
+          <span>Faça isso apenas uma vez</span>
+        </div>
+        <div class="passo-chevron">⌄</div>
+      </div>
+      <div class="passo-body">
+        <div class="alerta azul">
+          <span class="alerta-icon">ℹ️</span>
+          <div><strong>Você só precisa se cadastrar uma vez.</strong> Se já tem conta no Betha, vá direto para a verificação de identidade.</div>
+        </div>
+        <p>Acesse: <strong>divinopolis.mg.betha.cloud</strong> → Clique em ACESSAR → Clique em "Não possui uma conta?"</p>
+        <p style="margin-top:10px">Preencha: usuário de conexão, nome completo, e-mail e senha (mínimo 8 caracteres). Confirme o cadastro pelo e-mail que a Betha vai enviar.</p>
+
+        <div class="alerta vermelho" style="margin-top:14px">
+          <span class="alerta-icon">⚠️</span>
+          <div><strong>ESSENCIAL — Verificação de identidade:</strong> Após criar a conta, você DEVE verificar sua identidade para conseguir assinar documentos digitalmente. Sem essa etapa, seu TCE não pode ser assinado.</div>
+        </div>
+        <p style="margin-top:12px"><strong>Como verificar sua identidade:</strong></p>
+        <p>Após o login, clique no ícone de perfil no canto direito → Conta → "Verificar identidade com PIX". Será gerado um QR Code. Abra o app do seu banco, escaneie e faça um PIX de <strong>R$ 0,01</strong>. Aguarde a confirmação na tela. Pronto — identidade verificada!</p>
+        <div class="alerta verde" style="margin-top:12px">
+          <span class="alerta-icon">✅</span>
+          <div>Quando a verificação estiver concluída, aparecerá a mensagem <strong>"Verificação de identidade realizada"</strong> em verde na sua conta.</div>
+        </div>
+        <div class="video-placeholder" style="margin-top:16px" onclick="alert('Vídeo demonstrativo: Cadastro no Betha')">
+          <div class="video-play">▶️</div>
+          <strong>Vídeo demonstrativo</strong>
+          <p>Como criar conta e verificar identidade na Plataforma Betha</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- PASSO 5 -->
+    <div class="passo" onclick="togglePasso(this)">
+      <div class="passo-header">
+        <div class="passo-num verde">5</div>
+        <div class="passo-info">
+          <h3>Abertura do protocolo e envio dos documentos</h3>
+          <span>Último passo antes da análise do RH</span>
+        </div>
+        <div class="passo-chevron">⌄</div>
+      </div>
+      <div class="passo-body">
+        <p>Com todos os documentos reunidos e a identidade verificada no Betha, você está pronto para abrir seu protocolo.</p>
+        <p style="margin-top:10px"><strong>Acesse o protocolo:</strong> divinopolis.mg.betha.cloud (módulo Protocolo) → Criar Novo Processo → Preencha o assunto como <strong>"Admissão Estágio Curricular"</strong> → Preencha os dados pessoais → Anexe TODOS os documentos → Confirme.</p>
+        <div class="alerta amarelo" style="margin-top:14px">
+          <span class="alerta-icon">⚠️</span>
+          <div><strong>Documentos com "assinada digitalmente":</strong> Marque a opção "Assinar todos os anexos digitalmente" antes de continuar. Extensões aceitas: PDF, JPG, PNG, XLSX, DWG, JPEG. Tamanho máximo: 50MB por arquivo.</div>
+        </div>
+        <div class="video-placeholder" style="margin-top:14px" onclick="alert('Vídeo demonstrativo: Abertura de protocolo no Betha')">
+          <div class="video-play">▶️</div>
+          <strong>Vídeo demonstrativo</strong>
+          <p>Como abrir o protocolo e anexar documentos no Betha</p>
+        </div>
+        <p style="margin-top:14px">Após confirmar, você receberá o <strong>número do processo</strong>. Guarde esse número — é com ele que você acompanha tudo pelo portal.</p>
+        <div style="margin-top:16px">
+          <button class="btn-download" onclick="ir('tela-acompanhar')">🔍 Acompanhar meu processo</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- TELA 4B: TRILHA EXTRACURRICULAR        -->
+<!-- ═══════════════════════════════════════ -->
+<div id="tela-trilha-extra" class="screen">
+  <div class="hub-header">
+    <button class="btn-voltar" onclick="ir('tela-hub-extra')">← Voltar</button>
+    <div class="hub-breadcrumb">Início <span class="sep">›</span> Extracurricular <span class="sep">›</span> <span>Trilha</span></div>
+    <div class="hub-title">Trilha do Estágio Extracurricular Remunerado</div>
+    <div class="hub-sub">Siga cada passo com atenção. Clique em cada etapa para expandir.</div>
+  </div>
+  <div class="trilha-container">
+    <div class="trilha-intro">
+      <h2>💼 O que é o Estágio Extracurricular Remunerado?</h2>
+      <p>É uma modalidade voluntária com bolsa mensal (4h = R$ 497,91 / 6h = R$ 663,88) mais auxílio-transporte como reembolso. Duração de até 2 anos, renovável anualmente. Candidatos de qualquer IES podem participar, desde que confirmem com a instituição que estão aptos para essa modalidade. O processo começa com inscrição no portal de serviços da Prefeitura.</p>
+    </div>
+
+    <!-- PASSO 1 -->
+    <div class="passo" onclick="togglePasso(this)">
+      <div class="passo-header">
+        <div class="passo-num">1</div>
+        <div class="passo-info"><h3>Inscrição no portal de serviços</h3><span>Primeiro acesso ao processo</span></div>
+        <div class="passo-chevron">⌄</div>
+      </div>
+      <div class="passo-body">
+        <p>O primeiro passo é se cadastrar no portal de serviços da Prefeitura de Divinópolis. Você escolhe o edital correspondente ao seu curso e realiza sua inscrição.</p>
+        <div class="print-simulado">
+          <p>Tela atual do portal de inscrições (sistema existente)</p>
+          <div style="background:#1A3668;color:#fff;padding:16px;border-radius:6px;font-size:13px;text-align:left">
+            <div style="font-weight:700;margin-bottom:8px">🎓 Portal de Estágios — Prefeitura de Divinópolis</div>
+            <div style="background:rgba(255,255,255,0.1);padding:10px;border-radius:4px;font-size:12px">Selecione o edital do seu curso e faça sua inscrição. Você será convocado conforme os critérios de seleção.</div>
+          </div>
+        </div>
+        <div style="margin-top:12px">
+          <a href="https://servicos.prefeituradivinopolis.com.br/estagiarios/" target="_blank" class="btn-download">🔗 Acessar portal de inscrições</a>
+        </div>
+        <div class="alerta azul" style="margin-top:14px">
+          <span class="alerta-icon">ℹ️</span>
+          <div>Após a inscrição, confirme com sua IES se você está apto para realizar o estágio extracurricular.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PASSO 2 -->
+    <div class="passo" onclick="togglePasso(this)">
+      <div class="passo-header">
+        <div class="passo-num">2</div>
+        <div class="passo-info"><h3>Acompanhar as convocações</h3><span>Fique atento ao Diário Oficial</span></div>
+        <div class="passo-chevron">⌄</div>
+      </div>
+      <div class="passo-body">
+        <p>As convocações seguem critérios rígidos e são publicadas no Diário Oficial. A ordem de chamada é definida por: <strong>1º Período do curso</strong> (mais veterano tem prioridade) → <strong>2º Idade</strong> (mais velho tem prioridade) → <strong>3º Data de inscrição</strong> (quem inscreveu primeiro tem prioridade).</p>
+        <div class="alerta amarelo">
+          <span class="alerta-icon">📢</span>
+          <div>Os nomes dos inscritos não são exibidos publicamente. Acompanhe as publicações do Diário Oficial e fique atento ao seu e-mail e WhatsApp cadastrados.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PASSO 3 -->
+    <div class="passo" onclick="togglePasso(this)">
+      <div class="passo-header">
+        <div class="passo-num">3</div>
+        <div class="passo-info"><h3>Você foi convocado!</h3><span>Comunicação oficial por e-mail e WhatsApp</span></div>
+        <div class="passo-chevron">⌄</div>
+      </div>
+      <div class="passo-body">
+        <p>Ao ser convocado, você receberá comunicação oficial por e-mail e WhatsApp com as instruções para os próximos passos. Volte ao portal e siga a trilha — você terá <strong>48 horas úteis</strong> para manifestar interesse.</p>
+        <div class="alerta vermelho">
+          <span class="alerta-icon">⏰</span>
+          <div><strong>Atenção ao prazo de 48 horas:</strong> Se não houver manifestação dentro do prazo, o sistema realizará a desconvocação automática e o próximo candidato da lista será chamado.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PASSO 4 -->
+    <div class="passo" onclick="togglePasso(this)">
+      <div class="passo-header">
+        <div class="passo-num laranja">4</div>
+        <div class="passo-info"><h3>Consultar vagas e agendar visita</h3><span>Acesso liberado após convocação</span></div>
+        <div class="passo-chevron">⌄</div>
+      </div>
+      <div class="passo-body">
+        <p>Após a convocação, você terá acesso à tela de vagas disponíveis compatíveis com seu perfil. Use os filtros de turno, curso e local para encontrar a melhor opção e agende sua visita ao setor.</p>
+        <div class="alerta amarelo">
+          <span class="alerta-icon">⚡</span>
+          <div><strong>Seja rápido:</strong> Outros candidatos convocados também estão escolhendo. Quanto antes você agendar, melhor sua chance de garantir a vaga que deseja.</div>
+        </div>
+        <div style="margin-top:14px">
+          <button class="btn-download" onclick="ir('tela-vagas')">🔍 Ver vagas disponíveis</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- PASSO 5 -->
+    <div class="passo" onclick="togglePasso(this)">
+      <div class="passo-header">
+        <div class="passo-num">5</div>
+        <div class="passo-info"><h3>Visita e entrevista no setor</h3><span>Presencial — traga a autorização</span></div>
+        <div class="passo-chevron">⌄</div>
+      </div>
+      <div class="passo-body">
+        <p>Compareça ao setor no horário que você agendou. O servidor responsável pela vaga irá te receber, apresentar as atividades, tirar dúvidas e, se houver compatibilidade, assinar sua <strong>Autorização para Estágio</strong>.</p>
+        <div class="alerta verde">
+          <span class="alerta-icon">✅</span>
+          <div><strong>Se tudo certo:</strong> Pegue a Autorização assinada e volte para a trilha para seguir os próximos passos.</div>
+        </div>
+        <div class="alerta amarelo" style="margin-top:10px">
+          <span class="alerta-icon">🔄</span>
+          <div><strong>Se não der certo na vaga:</strong> Entre em contato com o RH/SEPLAG. Você tem direito a uma segunda chance de análise. Também é possível clicar em "Quero ver outra vaga" para retornar à seleção, sujeito à disponibilidade.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PASSO 6 -->
+    <div class="passo" onclick="togglePasso(this)">
+      <div class="passo-header">
+        <div class="passo-num">6</div>
+        <div class="passo-info"><h3>Abertura de conta no Banco Santander</h3><span>Obrigatório antes de protocolar</span></div>
+        <div class="passo-chevron">⌄</div>
+      </div>
+      <div class="passo-body">
+        <div class="alerta vermelho">
+          <span class="alerta-icon">🚫</span>
+          <div><strong>A conta Santander deve ser aberta ANTES de iniciar o protocolo no Betha.</strong> Sem os dados bancários, não é possível protocolar.</div>
+        </div>
+        <p style="margin-top:12px">A abertura pode ser feita pelo app ou site do Santander. Você precisará de RG ou CNH e CPF. Em alguns casos pode ser necessário ir a uma agência.</p>
+        <p style="margin-top:10px"><strong>Agência Santander Divinópolis:</strong> consulte a agência mais próxima pelo site do banco ou ligue 4004-3535 (capitais) / 0800 702 3535 (demais).</p>
+        <div style="margin-top:12px">
+          <a href="https://abrasuaconta.santander.com.br" target="_blank" class="btn-download">🏦 Abrir conta Santander</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- PASSO 7 -->
+    <div class="passo" onclick="togglePasso(this)">
+      <div class="passo-header">
+        <div class="passo-num laranja">7</div>
+        <div class="passo-info"><h3>Separar os documentos</h3><span>Checklist completo do extracurricular</span></div>
+        <div class="passo-chevron">⌄</div>
+      </div>
+      <div class="passo-body">
+        <div class="doc-list" id="docs-extra">
+          <div class="doc-item"><div class="doc-check" onclick="marcarDocExtra(this)"></div><div class="doc-info"><h4>RG e CPF</h4><p>Foto legível, documento válido.</p></div></div>
+          <div class="doc-item"><div class="doc-check" onclick="marcarDocExtra(this)"></div><div class="doc-info"><h4>Foto do rosto (selfie)</h4><p>Foto informal do rosto — não precisa ser 3x4 formal.</p></div></div>
+          <div class="doc-item"><div class="doc-check" onclick="marcarDocExtra(this)"></div><div class="doc-info"><h4>Título de eleitor</h4><p>Exigido para maiores de 18 anos.</p></div></div>
+          <div class="doc-item"><div class="doc-check" onclick="marcarDocExtra(this)"></div><div class="doc-info"><h4>Certificado de reservista</h4><p>Exigido para o sexo masculino até 45 anos.</p></div></div>
+          <div class="doc-item"><div class="doc-check" onclick="marcarDocExtra(this)"></div><div class="doc-info"><h4>Comprovante de residência</h4><p>Somente conta de água ou energia elétrica — máximo 30 dias.</p><p class="erro">⚠ Não são aceitos extrato bancário ou boleto.</p></div></div>
+          <div class="doc-item"><div class="doc-check" onclick="marcarDocExtra(this)"></div><div class="doc-info"><h4>Declaração de residência (se necessário)</h4><p>Quando o comprovante não estiver em seu nome. Assinar digitalmente.</p></div></div>
+          <div class="doc-item"><div class="doc-check" onclick="marcarDocExtra(this)"></div><div class="doc-info"><h4>Declaração de matrícula ativa</h4><p>Emitida e assinada pela IES, período letivo vigente.</p></div></div>
+          <div class="doc-item"><div class="doc-check" onclick="marcarDocExtra(this)"></div><div class="doc-info"><h4>PIS/PASEP</h4><p>Confira no app FGTS, holerite ou cartão cidadão. Primeiro emprego? Ligue no INSS: 135.</p></div></div>
+          <div class="doc-item"><div class="doc-check" onclick="marcarDocExtra(this)"></div><div class="doc-info"><h4>Dados bancários — Banco Santander</h4><p>Cartão da conta ou declaração de abertura de conta.</p></div></div>
+          <div class="doc-item"><div class="doc-check" onclick="marcarDocExtra(this)"></div><div class="doc-info"><h4>Autorização para Estágio</h4><p>Emitida e assinada pelo supervisor do setor na entrevista.</p></div></div>
+          <div class="doc-item"><div class="doc-check" onclick="marcarDocExtra(this)"></div><div class="doc-info"><h4>Laudo médico PCD (se aplicável)</h4><p>Obrigatório para candidatos com deficiência — garante extensão de prazo além de 2 anos.</p></div></div>
+        </div>
+        <div class="progress-wrap" style="margin-top:16px">
+          <div class="progress-label"><span>Documentos reunidos</span><span id="pct-extra">0%</span></div>
+          <div class="progress-bar"><div class="progress-fill" id="fill-extra" style="width:0%"></div></div>
+        </div>
+        <div style="margin-top:12px">
+          <button class="btn-download">📥 Baixar Declaração de Residência</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- PASSO 8 -->
+    <div class="passo" onclick="togglePasso(this)">
+      <div class="passo-header">
+        <div class="passo-num">8</div>
+        <div class="passo-info"><h3>Cadastro e validação na Plataforma Betha</h3><span>Igual ao curricular — faça uma só vez</span></div>
+        <div class="passo-chevron">⌄</div>
+      </div>
+      <div class="passo-body">
+        <p>Se ainda não tem conta no Betha, crie seguindo o mesmo passo a passo do estágio curricular. Se já tem, vá direto para a verificação de identidade via PIX de R$ 0,01.</p>
+        <div class="alerta vermelho">
+          <span class="alerta-icon">⚠️</span>
+          <div><strong>Não esqueça de verificar sua identidade.</strong> Sem verificação, você não consegue assinar o TCE digitalmente.</div>
+        </div>
+        <div class="video-placeholder" style="margin-top:14px" onclick="alert('Vídeo demonstrativo: Cadastro e validação no Betha')">
+          <div class="video-play">▶️</div>
+          <strong>Vídeo demonstrativo</strong>
+          <p>Como criar conta e verificar identidade na Plataforma Betha</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- PASSO 9 -->
+    <div class="passo" onclick="togglePasso(this)">
+      <div class="passo-header">
+        <div class="passo-num verde">9</div>
+        <div class="passo-info"><h3>Abertura do protocolo de admissão</h3><span>Envio dos documentos pelo Betha</span></div>
+        <div class="passo-chevron">⌄</div>
+      </div>
+      <div class="passo-body">
+        <p>No Betha, acesse o Protocolo → Criar Novo Processo → No campo Assunto selecione <strong>"Admissão Estagiário — Extracurricular (SEPLAG)"</strong> → Preencha dados pessoais → Anexe todos os documentos → Confirme.</p>
+        <div class="alerta amarelo">
+          <span class="alerta-icon">⏰</span>
+          <div><strong>Prazo:</strong> Você tem 7 dias corridos após a confirmação da vaga para enviar toda a documentação.</div>
+        </div>
+        <div class="video-placeholder" style="margin-top:14px" onclick="alert('Vídeo demonstrativo: Protocolo extracurricular no Betha')">
+          <div class="video-play">▶️</div>
+          <strong>Vídeo demonstrativo</strong>
+          <p>Como abrir o protocolo de admissão extracurricular no Betha</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- PASSO 10 -->
+    <div class="passo" onclick="togglePasso(this)">
+      <div class="passo-header">
+        <div class="passo-num verde">10</div>
+        <div class="passo-info"><h3>Protocolo de Auxílio-Transporte</h3><span>Protocolo separado — não esqueça!</span></div>
+        <div class="passo-chevron">⌄</div>
+      </div>
+      <div class="passo-body">
+        <p>O auxílio-transporte exige um protocolo separado no Betha. No campo Assunto selecione <strong>"Auxílio Transporte"</strong>. Preencha o formulário com seus dados de deslocamento e anexe os documentos solicitados.</p>
+        <div class="alerta azul">
+          <span class="alerta-icon">🚌</span>
+          <div><strong>Auxílio intermunicipal:</strong> Candidatos de Carmo do Cajuru, São José dos Salgados, São Gonçalo do Pará e São Sebastião do Oeste têm direito ao auxílio intermunicipal. Valores entre R$ 6,50 e R$ 11,50 por trajeto. Informe ao RH no momento do cadastro.</div>
+        </div>
+        <div style="margin-top:12px">
+          <button class="btn-download">📥 Baixar formulário de Auxílio-Transporte</button>
+        </div>
+        <p style="margin-top:14px">Após o protocolo, acompanhe todo o processo pelo portal usando seu número de protocolo ou CPF.</p>
+        <div style="margin-top:12px">
+          <button class="btn-download" onclick="ir('tela-acompanhar')">🔍 Acompanhar meu processo</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- TELA 5: VAGAS                          -->
+<!-- ═══════════════════════════════════════ -->
+<div id="tela-vagas" class="screen">
+  <div class="hub-header">
+    <button class="btn-voltar" onclick="ir('tela-trilha-extra')">← Voltar</button>
+    <div class="hub-breadcrumb">Início <span class="sep">›</span> Extracurricular <span class="sep">›</span> <span>Vagas disponíveis</span></div>
+    <div class="hub-title">Vagas disponíveis</div>
+    <div class="hub-sub">Use os filtros para encontrar a vaga mais compatível com seu perfil e agende sua visita.</div>
+  </div>
+  <div class="vagas-container">
+    <div class="vagas-filtros">
+      <span class="filtro-label">Filtrar por:</span>
+      <select class="filtro-select" onchange="filtrarVagas()">
+        <option value="">Todos os turnos</option>
+        <option value="Manhã">Manhã</option>
+        <option value="Tarde">Tarde</option>
+      </select>
+      <select class="filtro-select" onchange="filtrarVagas()">
+        <option value="">Todas as cargas</option>
+        <option value="4h">4 horas</option>
+        <option value="6h">6 horas</option>
+      </select>
+      <select class="filtro-select" onchange="filtrarVagas()">
+        <option value="">Todas as secretarias</option>
+        <option>Sec. Desenvolvimento Social</option>
+        <option>Sec. Saúde</option>
+        <option>Sec. Educação</option>
+        <option>Sec. Cultura</option>
+        <option>Sec. Meio Ambiente</option>
+      </select>
+    </div>
+    <div class="alerta amarelo" style="margin-bottom:20px">
+      <span class="alerta-icon">📅</span>
+      <div>Após clicar em "Tenho interesse", você deverá comparecer ao setor para a entrevista e pegar a Autorização assinada. Você tem <strong>48h úteis</strong> para confirmar seu interesse.</div>
+    </div>
+    <div class="vagas-table-wrap">
+      <table class="vagas-table" id="tabela-vagas">
+        <thead>
+          <tr>
+            <th>Setor</th>
+            <th>Secretaria</th>
+            <th>Curso</th>
+            <th>Turno</th>
+            <th>Carga</th>
+            <th>Atividades</th>
+            <th>Vagas</th>
+            <th>Ação</th>
+          </tr>
+        </thead>
+          <tbody>
+          <tr><td>Cadastro Único</td><td>Sec. Desenvolvimento Social</td><td>Psicologia</td><td><span class="tag-turno manha">Manhã</span></td><td>4h</td><td>Atendimento, triagem, análise de documentos</td><td>2</td><td><button class="btn-interesse" onclick="abrirInteresse('Cadastro Único','Psicologia','Manhã','4h','Atendimento, triagem e análise de documentos sociais')">Tenho interesse</button></td></tr>
+          <tr><td>Casa dos Conselhos</td><td>Sec. Desenvolvimento Social</td><td>Administração</td><td><span class="tag-turno tarde">Tarde</span></td><td>6h</td><td>Apoio administrativo, organização de reuniões</td><td>1</td><td><button class="btn-interesse" onclick="abrirInteresse('Casa dos Conselhos','Administração','Tarde','6h','Apoio administrativo e organização de reuniões')">Tenho interesse</button></td></tr>
+          <tr><td>Casa dos Conselhos</td><td>Sec. Desenvolvimento Social</td><td>Ciências da Computação</td><td><span class="tag-turno manha">Manhã</span></td><td>4h</td><td>Suporte técnico, sistemas internos</td><td>2</td><td><button class="btn-interesse" onclick="abrirInteresse('Casa dos Conselhos','Ciências da Computação','Manhã','4h','Suporte técnico e sistemas internos')">Tenho interesse</button></td></tr>
+          <tr><td>Coord. Biblioteca Pública</td><td>Sec. Cultura</td><td>Biblioteconomia</td><td><span class="tag-turno tarde">Tarde</span></td><td>4h</td><td>Catalogação, atendimento ao público, organização do acervo</td><td>5</td><td><button class="btn-interesse" onclick="abrirInteresse('Coord. Biblioteca Pública','Biblioteconomia','Tarde','4h','Catalogação, atendimento ao público e organização do acervo')">Tenho interesse</button></td></tr>
+          <tr><td>CRAS Nordeste</td><td>Sec. Desenvolvimento Social</td><td>Psicologia</td><td><span class="tag-turno manha">Manhã</span></td><td>6h</td><td>Apoio psicossocial, grupos de convivência</td><td>1</td><td><button class="btn-interesse" onclick="abrirInteresse('CRAS Nordeste','Psicologia','Manhã','6h','Apoio psicossocial e grupos de convivência')">Tenho interesse</button></td></tr>
+          <tr><td>CRAS Noroeste</td><td>Sec. Desenvolvimento Social</td><td>Psicologia</td><td><span class="tag-turno tarde">Tarde</span></td><td>6h</td><td>Apoio psicossocial, acompanhamento familiar</td><td>1</td><td><button class="btn-interesse" onclick="abrirInteresse('CRAS Noroeste','Psicologia','Tarde','6h','Apoio psicossocial e acompanhamento familiar')">Tenho interesse</button></td></tr>
+          <tr><td>CREAS</td><td>Sec. Desenvolvimento Social</td><td>Serviço Social</td><td><span class="tag-turno manha">Manhã</span></td><td>4h</td><td>Acompanhamento de casos, visitas domiciliares</td><td>1</td><td><button class="btn-interesse" onclick="abrirInteresse('CREAS','Serviço Social','Manhã','4h','Acompanhamento de casos e visitas domiciliares')">Tenho interesse</button></td></tr>
+          <tr><td>CAIA</td><td>Sec. Meio Ambiente</td><td>Medicina Veterinária</td><td><span class="tag-turno tarde">Tarde</span></td><td>4h</td><td>Manejo animal, atendimentos veterinários supervisionados</td><td>1</td><td><button class="btn-interesse" onclick="abrirInteresse('CAIA','Medicina Veterinária','Tarde','4h','Manejo animal e atendimentos veterinários supervisionados')">Tenho interesse</button></td></tr>
+          <tr><td>Gerência de RH</td><td>SEPLAG</td><td>Administração</td><td><span class="tag-turno manha">Manhã</span></td><td>6h</td><td>Apoio administrativo, análise de documentos, processos de RH</td><td>1</td><td><button class="btn-interesse" onclick="abrirInteresse('Gerência de RH','Administração','Manhã','6h','Apoio administrativo, análise de documentos e processos de RH')">Tenho interesse</button></td></tr>
+          <tr><td>Procuradoria Geral</td><td>PMD</td><td>Direito</td><td><span class="tag-turno tarde">Tarde</span></td><td>6h</td><td>Análise de documentos, elaboração de ofícios, pesquisa jurídica</td><td>1</td><td><button class="btn-interesse" onclick="abrirInteresse('Procuradoria Geral','Direito','Tarde','6h','Análise de documentos, elaboração de ofícios e pesquisa jurídica')">Tenho interesse</button></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- TELA 6: ACOMPANHAR PROCESSO            -->
+<!-- ═══════════════════════════════════════ -->
+<div id="tela-acompanhar" class="screen">
+  <div class="hub-header">
+    <button class="btn-voltar" onclick="fecharDetalhe(); ir('tela-hub-curricular')">← Voltar</button>
+    <div class="hub-breadcrumb">Início <span class="sep">›</span> <span>Acompanhar processo</span></div>
+    <div class="hub-title">Acompanhar meu processo</div>
+    <div class="hub-sub">Consulte o status do seu estágio pelo número do protocolo ou CPF</div>
+  </div>
+  <div class="acompanhar-container">
+    <div class="busca-card">
+      <h2>🔍 Consultar processo</h2>
+      <p>Informe o número do protocolo Betha ou seu CPF para localizar seu processo.</p>
+      <div class="input-group">
+        <input type="text" class="input-busca" placeholder="Ex: 2024.0001.0001234 ou 000.000.000-00" id="input-busca">
+        <button class="btn-buscar" onclick="buscarProcesso()">Buscar</button>
+      </div>
+    </div>
+
+    <!-- Resultados simulados -->
+    <div id="resultado-busca">
+      <div class="processo-card" id="card-proc-1" onclick="verDetalhe('proc1')">
+        <div class="processo-header">
+          <div class="processo-num">📄 Protocolo 2026.0001.0000847</div>
+          <span class="status-badge assinatura">Aguardando assinatura</span>
+        </div>
+        <div class="processo-info">
+          <div class="processo-info-item"><label>Modalidade</label><span>Extracurricular</span></div>
+          <div class="processo-info-item"><label>Setor</label><span>Gerência de RH — SEPLAG</span></div>
+          <div class="processo-info-item"><label>Aberto em</label><span>15/05/2026</span></div>
+          <div class="processo-info-item"><label>Última atualização</label><span>28/05/2026</span></div>
+        </div>
+      </div>
+      <div class="processo-card" id="card-proc-2" onclick="verDetalhe('proc2')">
+        <div class="processo-header">
+          <div class="processo-num">📄 Protocolo 2025.0001.0000312</div>
+          <span class="status-badge concluido">Concluído</span>
+        </div>
+        <div class="processo-info">
+          <div class="processo-info-item"><label>Modalidade</label><span>Extracurricular</span></div>
+          <div class="processo-info-item"><label>Setor</label><span>Procuradoria Geral</span></div>
+          <div class="processo-info-item"><label>Aberto em</label><span>10/02/2025</span></div>
+          <div class="processo-info-item"><label>Última atualização</label><span>28/02/2025</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Detalhe do processo -->
+    <div class="detalhe-processo" id="detalhe-proc1">
+      <div class="detalhe-header">
+        <h3>📄 Protocolo 2026.0001.0000847 — Extracurricular</h3>
+        <span class="status-badge assinatura">Aguardando assinatura</span>
+      </div>
+      <div class="detalhe-body">
+        <p style="font-size:13px;color:var(--cinza-texto);margin-bottom:16px">Setor: <strong>Gerência de RH — SEPLAG</strong> · Início previsto: <strong>02/06/2026</strong></p>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-dot verde"></div>
+            <div class="timeline-content"><h4>✅ Protocolo aberto</h4><p>15/05/2026 — Documentação enviada com sucesso</p></div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot verde"></div>
+            <div class="timeline-content"><h4>✅ Documentação aprovada</h4><p>20/05/2026 — Todos os documentos conferidos pelo RH</p></div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot verde"></div>
+            <div class="timeline-content"><h4>✅ TCE emitido</h4><p>25/05/2026 — Termo de Compromisso de Estágio gerado</p></div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot verde"></div>
+            <div class="timeline-content"><h4>✅ Assinatura do candidato</h4><p>26/05/2026 — Assinado digitalmente via Betha</p></div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot amarelo"></div>
+            <div class="timeline-content"><h4>⏳ Aguardando assinatura da IES</h4><p class="pendencia">Pendente — A IES deve assinar o TCE para prosseguir</p></div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot cinza"></div>
+            <div class="timeline-content"><h4>Assinatura da Prefeitura</h4><p>Aguardando etapa anterior</p></div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot cinza"></div>
+            <div class="timeline-content"><h4>Início das atividades</h4><p>Aguardando TCE totalmente assinado</p></div>
+          </div>
+        </div>
+
+        <div class="alerta amarelo">
+          <span class="alerta-icon">⏳</span>
+          <div><strong>Próximo passo:</strong> Sua IES precisa assinar o TCE. Entre em contato com a coordenadoria de estágios da sua instituição para agilizar a assinatura.</div>
+        </div>
+
+        <div class="pareceres-section">
+          <h4 style="font-size:14px;font-weight:600;color:var(--azul-escuro);margin-bottom:12px">💬 Pareceres do processo</h4>
+          <div class="parecer-item">
+            <div class="parecer-meta">RH/SEPLAG · 20/05/2026 às 14:32</div>
+            <div class="parecer-texto">Documentação analisada e aprovada. TCE em processo de emissão. Aguarde comunicação para assinatura.</div>
+          </div>
+          <div class="parecer-item retorno">
+            <div class="parecer-meta">RH/SEPLAG · 22/05/2026 às 09:15</div>
+            <div class="parecer-texto">⚠ TCE disponível para assinatura. Acesse o assinador Betha para assinar seu Termo de Compromisso de Estágio.</div>
+          </div>
+          <div class="parecer-item">
+            <div class="parecer-meta">RH/SEPLAG · 28/05/2026 às 11:00</div>
+            <div class="parecer-texto">Assinatura do candidato confirmada. Aguardando assinatura da IES para prosseguir.</div>
+          </div>
+        </div>
+
+        <button class="btn-betha" onclick="alert('Redirecionando para o Betha...')">
+          🔗 Acessar meu protocolo no Betha
+        </button>
+        <button class="btn-secondary" style="margin-top:10px;display:inline-flex;margin-left:10px;color:var(--cinza-texto);border:1px solid var(--cinza-borda);padding:10px 16px;border-radius:6px;background:#fff;cursor:pointer;font-size:13px" onclick="fecharDetalhe()">← Voltar à lista</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- TELA 7: FAQ / DIREITOS E DEVERES       -->
+<!-- ═══════════════════════════════════════ -->
+<div id="tela-faq" class="screen">
+  <div class="hub-header">
+    <button class="btn-voltar" onclick="ir('tela-home')">← Voltar</button>
+    <div class="hub-title">Perguntas Frequentes & Direitos e Deveres</div>
+    <div class="hub-sub">Respostas para as dúvidas mais comuns sobre o processo de estágio</div>
+  </div>
+  <div class="faq-container">
+    <div class="section-title" style="margin-bottom:20px">📋 Direitos e deveres do estagiário</div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-pergunta">Qual é o valor da minha bolsa? <span class="faq-chevron">⌄</span></div>
+      <div class="faq-resposta">Para o estágio extracurricular remunerado: <strong>4 horas diárias = R$ 497,91/mês</strong> e <strong>6 horas diárias = R$ 663,88/mês</strong>. O pagamento é feito até o 5º dia útil do mês seguinte ao trabalhado, diretamente na sua conta Santander. O estágio curricular não possui remuneração em bolsa.</div>
+    </div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-pergunta">Quando recebo o auxílio-transporte? <span class="faq-chevron">⌄</span></div>
+      <div class="faq-resposta">O auxílio-transporte é pago como <strong>reembolso</strong>, junto com a bolsa mensal, até o 5º dia útil do mês seguinte. É calculado apenas pelos dias efetivamente trabalhados. O valor é de R$ 5,50 por passagem no transporte coletivo urbano. Para municípios como Carmo do Cajuru, São Gonçalo do Pará, São José dos Salgados e São Sebastião do Oeste, o valor é intermunicipal (entre R$ 6,50 e R$ 11,50 por trajeto).</div>
+    </div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-pergunta">Tenho direito a férias? <span class="faq-chevron">⌄</span></div>
+      <div class="faq-resposta">Sim. O estagiário extracurricular tem direito a férias proporcionais ao período trabalhado. As férias são definidas a critério da gestão interna e devem ser comunicadas antes do início do período de gozo. Na rescisão, os dias proporcionais acumulados são calculados e pagos junto com a bolsa do mês.</div>
+    </div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-pergunta">Posso fazer horas extras? <span class="faq-chevron">⌄</span></div>
+      <div class="faq-resposta"><strong>Não. A realização de horas extras pelo estagiário é ILEGAL</strong>, conforme a Lei 11.788/2008. O gestor que solicitar ou permitir horas além da carga contratada responde administrativamente. Carga horária máxima: 4h ou 6h diárias, conforme contratado.</div>
+    </div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-pergunta">O que acontece se eu faltar? <span class="faq-chevron">⌄</span></div>
+      <div class="faq-resposta">O regimento prevê até <strong>3 dias de abono</strong> por faltas justificadas durante todo o contrato (consecutivos ou não), mediante apresentação de atestado médico ou atestado de óbito de parentes. <strong>Falta por mais de 5 dias úteis sem justificativa</strong> resulta em rescisão imediata do contrato. O auxílio-transporte não é pago nos dias de falta.</div>
+    </div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-pergunta">Como solicitar rescisão do meu contrato? <span class="faq-chevron">⌄</span></div>
+      <div class="faq-resposta">Basta entrar em contato com o RH/SEPLAG pelo e-mail <strong>semad.contratacao@divinopolis.mg.gov.br</strong> ou pelo telefone <strong>(37) 3229-8154</strong>. Não é necessária formalização prévia por escrito — o RH emite o Termo de Rescisão. Os dias proporcionais de férias serão calculados e pagos no mês da rescisão.</div>
+    </div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-pergunta">Como solicitar um termo aditivo (alteração de vaga, carga horária, supervisor)? <span class="faq-chevron">⌄</span></div>
+      <div class="faq-resposta">Entre em contato com o RH/SEPLAG informando o que precisa ser alterado. O RH emite o Termo Aditivo correspondente e encaminha para assinatura das partes. No extracurricular, são possíveis alterações de local, carga horária, turno e supervisor. No curricular, alterações também são possíveis desde que ocorram dentro do período letivo ativo.</div>
+    </div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-pergunta">Como funciona o controle de presença? <span class="faq-chevron">⌄</span></div>
+      <div class="faq-resposta">O registro de ponto é feito por <strong>biometria facial</strong> integrada ao sistema de folha de pagamento da Prefeitura. Nos primeiros dias, enquanto seu cadastro biométrico não está ativo, o gestor do setor faz lançamentos manuais dos dias trabalhados — você não perde o pagamento desses dias.</div>
+    </div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-pergunta">Posso ter emprego com carteira assinada (CLT) ao mesmo tempo que faço estágio extracurricular? <span class="faq-chevron">⌄</span></div>
+      <div class="faq-resposta">Sim. O vínculo empregatício simultâneo (CLT) é permitido e não impede a realização do estágio extracurricular remunerado na Prefeitura.</div>
+    </div>
+
+    <div class="section-title" style="margin:32px 0 20px">❓ Perguntas sobre o processo</div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-pergunta">Onde encontro meu número de PIS/PASEP? <span class="faq-chevron">⌄</span></div>
+      <div class="faq-resposta">Confira no <strong>app FGTS</strong>, em holerites anteriores ou no cartão cidadão. Se for seu primeiro emprego e ainda não tem o número cadastrado, ligue no <strong>INSS: 135</strong> para solicitar o cadastro.</div>
+    </div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-pergunta">Posso enviar documentos por WhatsApp ou e-mail? <span class="faq-chevron">⌄</span></div>
+      <div class="faq-resposta"><strong>Não. Nenhum documento é aceito por WhatsApp ou e-mail.</strong> O envio oficial ocorre exclusivamente pela Plataforma Betha, através do protocolo de admissão. Envios por outros canais não têm validade e não darão andamento ao processo.</div>
+    </div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-pergunta">O que acontece se meu protocolo for devolvido com pendências? <span class="faq-pergunta">⌄</span></div>
+      <div class="faq-resposta">Você receberá um e-mail automático do Betha informando sobre a devolução. O RH também entrará em contato via WhatsApp. Para corrigir: acesse seu protocolo no Betha → clique em "Analisar Solicitação" → vá na aba "Documentos" → substitua os arquivos com pendência → clique em "Enviar". Verifique também a aba "Comentários" para outras orientações do RH.</div>
+    </div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-pergunta">Posso começar o estágio antes de o TCE estar assinado por todos? <span class="faq-chevron">⌄</span></div>
+      <div class="faq-resposta"><strong>Não. O início das atividades só é permitido após o TCE estar assinado por todas as partes:</strong> candidato, IES e Prefeitura (nessa ordem). Iniciar antes é irregular e coloca o estagiário e o gestor em situação de risco.</div>
+    </div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-pergunta">Como entrar em contato com o RH? <span class="faq-chevron">⌄</span></div>
+      <div class="faq-resposta"><strong>SEPLAG — Gerência de Recursos Humanos</strong><br>📍 Avenida Paraná, nº 2.601, sala 307 — Bairro São José, Divinópolis/MG<br>📞 (37) 3229-8154<br>📧 semad.contratacao@divinopolis.mg.gov.br<br>Horário de atendimento: segunda a sexta, 08h às 17h.</div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL INTERESSE VAGA — PASSO 1: DETALHES -->
+<div class="modal-overlay" id="modal-interesse">
+  <div class="modal-box">
+    <h3>Detalhes da vaga</h3>
+    <p>Confira todas as informações antes de confirmar seu interesse. Você tem <strong>48 horas úteis</strong> para agendar a visita após confirmar.</p>
+    <div class="modal-vaga-info" id="modal-vaga-info">
+      <h4 id="modal-setor">Setor</h4>
+      <p id="modal-curso">Curso</p>
+      <p id="modal-turno-carga">Turno · Carga</p>
+      <p id="modal-atividades" style="margin-top:6px;font-size:12px;color:var(--cinza-subtexto)"></p>
+    </div>
+    <div class="alerta amarelo" style="margin-bottom:16px">
+      <span class="alerta-icon">⏰</span>
+      <div>Após confirmar, você deverá agendar a visita ao setor. O prazo máximo é de <strong>48 horas úteis</strong>.</div>
+    </div>
+    <div class="modal-btns">
+      <button class="btn-cancelar" onclick="fecharModalInteresse()">Cancelar</button>
+      <button class="btn-confirmar" onclick="avancarParaAgendamento()">Tenho interesse — Agendar visita →</button>
+    </div>
+  </div>
+</div>
+
+<!-- TELA T08: AGENDAMENTO DE ENTREVISTA -->
+<div id="tela-agendamento" class="screen">
+  <div class="hub-header">
+    <button class="btn-voltar" onclick="ir('tela-vagas')">← Voltar às vagas</button>
+    <div class="hub-breadcrumb">Início <span class="sep">›</span> Extracurricular <span class="sep">›</span> Vagas <span class="sep">›</span> <span>Agendamento</span></div>
+    <div class="hub-title">Agendar visita ao setor</div>
+    <div class="hub-sub">Escolha a melhor data e horário para comparecer à entrevista e pegar sua Autorização.</div>
+  </div>
+  <div style="max-width:780px;margin:0 auto;padding:32px 40px">
+
+    <!-- Info da vaga selecionada -->
+    <div style="background:#fff;border:1px solid var(--cinza-borda);border-radius:12px;padding:20px;margin-bottom:24px;display:flex;gap:20px;align-items:flex-start">
+      <div style="width:48px;height:48px;background:#EBF4FF;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0">🏛️</div>
+      <div style="flex:1">
+        <div style="font-family:'Outfit',sans-serif;font-size:16px;font-weight:700;color:var(--azul-escuro);margin-bottom:4px" id="agenda-setor">Setor da Vaga</div>
+        <div style="font-size:13px;color:var(--cinza-texto)" id="agenda-info">Secretaria · Turno · Carga horária</div>
+        <div style="font-size:12px;color:var(--cinza-subtexto);margin-top:4px" id="agenda-endereco">📍 Endereço do setor</div>
+      </div>
+      <div>
+        <span id="agenda-turno-badge" class="tag-turno manha">Manhã</span>
+      </div>
+    </div>
+
+    <div class="alerta azul" style="margin-bottom:20px">
+      <span class="alerta-icon">ℹ️</span>
+      <div><strong>O que você deve fazer na visita:</strong> compareça no horário agendado, conheça o setor, tire suas dúvidas sobre as atividades e, se tudo estiver certo, receba a <strong>Autorização para Estágio</strong> assinada pelo supervisor. Traga um documento de identificação.</div>
+    </div>
+
+    <!-- Calendário -->
+    <div style="background:#fff;border:1px solid var(--cinza-borda);border-radius:12px;padding:24px;margin-bottom:20px">
+      <div style="font-family:'Outfit',sans-serif;font-size:15px;font-weight:600;color:var(--azul-escuro);margin-bottom:16px">📅 Selecione a data da visita</div>
+      <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin-bottom:16px">
+        <div style="text-align:center;font-size:11px;font-weight:600;color:var(--cinza-subtexto);padding:4px">SEG</div>
+        <div style="text-align:center;font-size:11px;font-weight:600;color:var(--cinza-subtexto);padding:4px">TER</div>
+        <div style="text-align:center;font-size:11px;font-weight:600;color:var(--cinza-subtexto);padding:4px">QUA</div>
+        <div style="text-align:center;font-size:11px;font-weight:600;color:var(--cinza-subtexto);padding:4px">QUI</div>
+        <div style="text-align:center;font-size:11px;font-weight:600;color:var(--cinza-subtexto);padding:4px">SEX</div>
+        <div style="text-align:center;font-size:11px;font-weight:600;color:#CBD5E0;padding:4px">SÁB</div>
+        <div style="text-align:center;font-size:11px;font-weight:600;color:#CBD5E0;padding:4px">DOM</div>
+        <!-- Dias passados/indisponíveis -->
+        <div style="text-align:center;padding:8px;font-size:13px;color:#CBD5E0;background:#F7FAFC;border-radius:6px">26</div>
+        <div style="text-align:center;padding:8px;font-size:13px;color:#CBD5E0;background:#F7FAFC;border-radius:6px">27</div>
+        <div style="text-align:center;padding:8px;font-size:13px;color:#CBD5E0;background:#F7FAFC;border-radius:6px">28</div>
+        <div style="text-align:center;padding:8px;font-size:13px;color:#CBD5E0;background:#F7FAFC;border-radius:6px">29</div>
+        <div style="text-align:center;padding:8px;font-size:13px;color:#CBD5E0;background:#F7FAFC;border-radius:6px">30</div>
+        <div style="text-align:center;padding:8px;font-size:13px;color:#CBD5E0;border-radius:6px">31</div>
+        <div style="text-align:center;padding:8px;font-size:13px;color:#CBD5E0;border-radius:6px">01</div>
+        <!-- Dias disponíveis -->
+        <div class="cal-dia disponivel" onclick="selecionarDia(this,'02/06')" style="text-align:center;padding:8px;font-size:13px;border-radius:6px;cursor:pointer;border:1px solid var(--cinza-borda);transition:all .15s">02</div>
+        <div class="cal-dia disponivel" onclick="selecionarDia(this,'03/06')" style="text-align:center;padding:8px;font-size:13px;border-radius:6px;cursor:pointer;border:1px solid var(--cinza-borda);transition:all .15s">03</div>
+        <div class="cal-dia disponivel" onclick="selecionarDia(this,'04/06')" style="text-align:center;padding:8px;font-size:13px;border-radius:6px;cursor:pointer;border:1px solid var(--cinza-borda);transition:all .15s">04</div>
+        <div class="cal-dia disponivel" onclick="selecionarDia(this,'05/06')" style="text-align:center;padding:8px;font-size:13px;border-radius:6px;cursor:pointer;border:1px solid var(--cinza-borda);transition:all .15s">05</div>
+        <div class="cal-dia disponivel" onclick="selecionarDia(this,'06/06')" style="text-align:center;padding:8px;font-size:13px;border-radius:6px;cursor:pointer;border:1px solid var(--cinza-borda);transition:all .15s">06</div>
+        <div style="text-align:center;padding:8px;font-size:13px;color:#CBD5E0;border-radius:6px">07</div>
+        <div style="text-align:center;padding:8px;font-size:13px;color:#CBD5E0;border-radius:6px">08</div>
+        <div class="cal-dia disponivel" onclick="selecionarDia(this,'09/06')" style="text-align:center;padding:8px;font-size:13px;border-radius:6px;cursor:pointer;border:1px solid var(--cinza-borda);transition:all .15s">09</div>
+        <div class="cal-dia disponivel" onclick="selecionarDia(this,'10/06')" style="text-align:center;padding:8px;font-size:13px;border-radius:6px;cursor:pointer;border:1px solid var(--cinza-borda);transition:all .15s">10</div>
+        <div style="text-align:center;padding:8px;font-size:13px;color:#CBD5E0;background:#FFF7ED;border-radius:6px;font-size:11px">Feriado</div>
+        <div class="cal-dia disponivel" onclick="selecionarDia(this,'12/06')" style="text-align:center;padding:8px;font-size:13px;border-radius:6px;cursor:pointer;border:1px solid var(--cinza-borda);transition:all .15s">12</div>
+        <div class="cal-dia disponivel" onclick="selecionarDia(this,'13/06')" style="text-align:center;padding:8px;font-size:13px;border-radius:6px;cursor:pointer;border:1px solid var(--cinza-borda);transition:all .15s">13</div>
+      </div>
+      <div style="display:flex;gap:12px;font-size:11px;color:var(--cinza-subtexto)">
+        <span>🟦 Selecionado</span>
+        <span style="border:1px solid var(--cinza-borda);padding:1px 8px;border-radius:4px;font-size:11px">Disponível</span>
+        <span style="background:#F7FAFC;padding:1px 8px;border-radius:4px;font-size:11px;color:#CBD5E0">Indisponível</span>
+        <span style="background:#FFF7ED;padding:1px 8px;border-radius:4px;font-size:11px">Feriado</span>
+      </div>
+    </div>
+
+    <!-- Horários -->
+    <div style="background:#fff;border:1px solid var(--cinza-borda);border-radius:12px;padding:24px;margin-bottom:20px" id="bloco-horarios" style="display:none">
+      <div style="font-family:'Outfit',sans-serif;font-size:15px;font-weight:600;color:var(--azul-escuro);margin-bottom:4px">🕐 Escolha o horário</div>
+      <div style="font-size:13px;color:var(--cinza-subtexto);margin-bottom:16px" id="label-data-sel">Selecione uma data acima para ver os horários disponíveis</div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap" id="grade-horarios">
+        <div class="slot-horario" onclick="selecionarHorario(this,'08:00')" style="padding:10px 18px;border:1px solid var(--cinza-borda);border-radius:8px;font-size:13px;font-weight:500;cursor:pointer;transition:all .15s">08:00</div>
+        <div class="slot-horario" onclick="selecionarHorario(this,'09:00')" style="padding:10px 18px;border:1px solid var(--cinza-borda);border-radius:8px;font-size:13px;font-weight:500;cursor:pointer;transition:all .15s">09:00</div>
+        <div class="slot-horario" onclick="selecionarHorario(this,'10:00')" style="padding:10px 18px;border:1px solid var(--cinza-borda);border-radius:8px;font-size:13px;font-weight:500;cursor:pointer;transition:all .15s">10:00</div>
+        <div class="slot-horario" onclick="selecionarHorario(this,'11:00')" style="padding:10px 18px;border:1px solid var(--cinza-borda);border-radius:8px;font-size:13px;font-weight:500;cursor:pointer;transition:all .15s">11:00</div>
+        <div style="padding:10px 18px;background:#F7FAFC;border:1px solid var(--cinza-borda);border-radius:8px;font-size:13px;color:#CBD5E0">14:00 — Ocupado</div>
+        <div class="slot-horario" onclick="selecionarHorario(this,'15:00')" style="padding:10px 18px;border:1px solid var(--cinza-borda);border-radius:8px;font-size:13px;font-weight:500;cursor:pointer;transition:all .15s">15:00</div>
+        <div class="slot-horario" onclick="selecionarHorario(this,'16:00')" style="padding:10px 18px;border:1px solid var(--cinza-borda);border-radius:8px;font-size:13px;font-weight:500;cursor:pointer;transition:all .15s">16:00</div>
+      </div>
+    </div>
+
+    <!-- Confirmação -->
+    <div style="background:#F0FFF4;border:1px solid #86EFAC;border-radius:12px;padding:20px;margin-bottom:20px;display:none" id="bloco-confirmacao">
+      <div style="font-family:'Outfit',sans-serif;font-size:15px;font-weight:600;color:var(--verde);margin-bottom:10px">✅ Resumo do agendamento</div>
+      <div style="font-size:13px;color:var(--texto-dark);line-height:2">
+        <div>📅 Data: <strong id="conf-data">—</strong></div>
+        <div>🕐 Horário: <strong id="conf-hora">—</strong></div>
+        <div>🏛️ Local: <strong id="conf-local">—</strong></div>
+        <div>📍 Endereço: <strong id="conf-end">—</strong></div>
+        <div>👤 Responsável: <strong id="conf-resp">Supervisor do setor</strong></div>
+      </div>
+      <div class="alerta azul" style="margin-top:14px;margin-bottom:0">
+        <span class="alerta-icon">📋</span>
+        <div><strong>Lembre-se de levar:</strong> documento de identificação (RG ou CNH). Após a entrevista, se tudo certo, o supervisor assinará sua <strong>Autorização para Estágio</strong>.</div>
+      </div>
+    </div>
+
+    <div style="display:flex;gap:12px">
+      <button class="btn-secondary" onclick="ir('tela-vagas')" style="padding:12px 20px;border-radius:8px;font-size:14px">← Escolher outra vaga</button>
+      <button class="btn-primary" id="btn-confirmar-agenda" style="flex:1;justify-content:center;opacity:.4" disabled onclick="confirmarAgendamento()">
+        Confirmar agendamento ✅
+      </button>
+    </div>
+
+    <!-- T09: Desistência -->
+    <div style="margin-top:24px;padding-top:20px;border-top:1px solid var(--cinza-borda);text-align:center">
+      <p style="font-size:13px;color:var(--cinza-subtexto);margin-bottom:12px">Mudou de ideia sobre essa vaga?</p>
+      <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+        <button onclick="abrirDesistencia('outra')" style="background:#FFF7ED;color:#9A3412;border:1px solid #FED7AA;padding:8px 18px;border-radius:6px;font-size:13px;font-weight:500;cursor:pointer">🔄 Quero ver outra vaga</button>
+        <button onclick="abrirDesistencia('desistir')" style="background:#FFF5F5;color:#9B2C2C;border:1px solid #FCA5A5;padding:8px 18px;border-radius:6px;font-size:13px;font-weight:500;cursor:pointer">❌ Quero desistir do processo</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL T09: DESISTÊNCIA / SEGUNDA CHANCE -->
+<div class="modal-overlay" id="modal-desistencia">
+  <div class="modal-box">
+    <div id="modal-des-outra" style="display:none">
+      <h3>🔄 Solicitar outra vaga</h3>
+      <p>Entendemos que a vaga visitada não era o que você esperava. Você tem direito a uma <strong>segunda chance</strong>, mas ela será analisada pelo RH/SEPLAG.</p>
+      <div class="alerta amarelo" style="margin-bottom:16px">
+        <span class="alerta-icon">⚠️</span>
+        <div><strong>Importante:</strong> A segunda chance não é automática. O RH irá analisar sua situação e verificar a disponibilidade de outra vaga compatível com seu perfil. Você receberá um retorno por e-mail e WhatsApp.</div>
+      </div>
+      <p style="font-size:13px;color:var(--cinza-texto);margin-bottom:16px">Descreva brevemente o motivo para nos ajudar a encontrar uma vaga mais adequada:</p>
+      <textarea style="width:100%;padding:10px 12px;border:1px solid var(--cinza-borda);border-radius:8px;font-size:13px;font-family:'Inter',sans-serif;resize:vertical;min-height:80px;outline:none" placeholder="Ex: O horário não é compatível com minha grade de aulas, o local é de difícil acesso..."></textarea>
+      <div class="modal-btns">
+        <button class="btn-cancelar" onclick="fecharDesistencia()">Voltar</button>
+        <button class="btn-confirmar" style="background:var(--laranja)" onclick="confirmarSegundaChance()">📨 Enviar solicitação ao RH</button>
+      </div>
+    </div>
+    <div id="modal-des-desistir" style="display:none">
+      <h3>❌ Desistir do processo</h3>
+      <p>Tem certeza que deseja desistir do processo seletivo? Essa ação encerrará sua participação neste chamamento.</p>
+      <div class="alerta vermelho" style="margin-bottom:16px">
+        <span class="alerta-icon">⚠️</span>
+        <div><strong>Atenção:</strong> Ao desistir, sua posição na lista será encerrada. Para participar novamente, será necessário aguardar um novo edital e realizar uma nova inscrição.</div>
+      </div>
+      <p style="font-size:13px;color:var(--cinza-texto);margin-bottom:16px">Se quiser, nos conte o motivo da desistência:</p>
+      <select style="width:100%;padding:10px 12px;border:1px solid var(--cinza-borda);border-radius:8px;font-size:13px;font-family:'Inter',sans-serif;outline:none;margin-bottom:10px">
+        <option>Selecione o motivo (opcional)</option>
+        <option>Consegui outro emprego ou estágio</option>
+        <option>Horário incompatível com faculdade</option>
+        <option>Local de difícil acesso</option>
+        <option>Não me identifiquei com as atividades</option>
+        <option>Motivos pessoais</option>
+        <option>Outro motivo</option>
+      </select>
+      <div class="modal-btns">
+        <button class="btn-cancelar" onclick="fecharDesistencia()">Voltar — não quero desistir</button>
+        <button class="btn-confirmar" style="background:var(--vermelho)" onclick="confirmarDesistencia()">Confirmar desistência</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- RODAPÉ -->
+<footer style="background:var(--azul-escuro);padding:24px 40px;margin-top:40px;display:flex;justify-content:space-between;align-items:center">
+  <div style="font-size:12px;color:rgba(255,255,255,0.5)">© 2026 Prefeitura Municipal de Divinópolis · SEPLAG · Gerência de Recursos Humanos</div>
+  <div style="display:flex;gap:20px">
+    <button onclick="ir('tela-faq')" style="background:none;border:none;color:rgba(255,255,255,0.5);font-size:12px;cursor:pointer">Perguntas frequentes</button>
+    <button onclick="ir('tela-acompanhar')" style="background:none;border:none;color:rgba(255,255,255,0.5);font-size:12px;cursor:pointer">Acompanhar processo</button>
+  </div>
+</footer>
+
+<script>
+// ── Navegação ──
+function ir(telaId) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('ativa'));
+  const tela = document.getElementById(telaId);
+  if (tela) { tela.classList.add('ativa'); window.scrollTo(0,0); }
+}
+
+// ── Accordion passos ──
+function togglePasso(el) {
+  const body = el.querySelector('.passo-body');
+  if (!body) return;
+  el.classList.toggle('aberto');
+}
+
+// ── Accordion FAQ ──
+function toggleFaq(el) { el.classList.toggle('aberto'); }
+
+// ── Checklist curricular ──
+function marcarDoc(el) {
+  el.classList.toggle('marcado');
+  el.innerHTML = el.classList.contains('marcado') ? '✓' : '';
+  atualizarProgress('docs-curricular','fill-curr','pct-curr');
+}
+function marcarDocExtra(el) {
+  el.classList.toggle('marcado');
+  el.innerHTML = el.classList.contains('marcado') ? '✓' : '';
+  atualizarProgress('docs-extra','fill-extra','pct-extra');
+}
+function atualizarProgress(listaId, fillId, pctId) {
+  const lista = document.getElementById(listaId);
+  if (!lista) return;
+  const total = lista.querySelectorAll('.doc-check').length;
+  const marcados = lista.querySelectorAll('.doc-check.marcado').length;
+  const pct = Math.round((marcados/total)*100);
+  document.getElementById(fillId).style.width = pct+'%';
+  document.getElementById(pctId).textContent = pct+'%';
+}
+
+// ── Busca processo ──
+function buscarProcesso() {
+  const val = document.getElementById('input-busca').value.trim();
+  if (!val) return;
+  document.getElementById('card-proc-1').classList.add('visivel');
+  document.getElementById('card-proc-2').classList.add('visivel');
+}
+
+function verDetalhe(id) {
+  document.getElementById('resultado-busca').style.display = 'none';
+  document.getElementById('detalhe-'+id).classList.add('visivel');
+}
+function fecharDetalhe() {
+  document.querySelectorAll('.detalhe-processo').forEach(d => d.classList.remove('visivel'));
+  document.getElementById('resultado-busca').style.display = 'block';
+}
+function voltarAcompanhar() { fecharDetalhe(); }
+
+// ── Modal vagas ──
+// ── Estado do agendamento ──
+let vagaSelecionada = {};
+let diaSelecionado = '';
+let horarioSelecionado = '';
+
+const enderecos = {
+  'Cadastro Único': 'Av. Paraná, 2.601 — São José',
+  'Casa dos Conselhos': 'Rua Pernambuco, 60 — Centro',
+  'Coord. Biblioteca Pública': 'Praça Dr. Geraldo Resende — Centro',
+  'CRAS Nordeste': 'Rua Antônio Olinto, 320 — Sidil',
+  'CRAS Noroeste': 'Rua das Acácias, 150 — Santa Lúcia',
+  'CREAS': 'Av. Paraná, 2.601 — São José',
+  'CAIA': 'Rua dos Ipês, 400 — Niterói',
+  'Gerência de RH': 'Av. Paraná, 2.601, sala 307 — São José',
+  'Procuradoria Geral': 'Av. Paraná, 2.601 — São José',
+};
+
+function abrirInteresse(setor, curso, turno, carga, atividades) {
+  vagaSelecionada = { setor, curso, turno, carga, atividades: atividades||'' };
+  document.getElementById('modal-setor').textContent = setor;
+  document.getElementById('modal-curso').textContent = 'Curso: ' + curso;
+  document.getElementById('modal-turno-carga').textContent = 'Turno: ' + turno + ' · ' + carga + '/dia';
+  document.getElementById('modal-atividades').textContent = atividades || '';
+  document.getElementById('modal-interesse').classList.add('aberto');
+}
+
+function fecharModalInteresse() {
+  document.getElementById('modal-interesse').classList.remove('aberto');
+}
+
+function avancarParaAgendamento() {
+  fecharModalInteresse();
+  // Preencher dados da vaga na tela de agendamento
+  document.getElementById('agenda-setor').textContent = vagaSelecionada.setor;
+  document.getElementById('agenda-info').textContent =
+    'Secretaria correspondente · ' + vagaSelecionada.turno + ' · ' + vagaSelecionada.carga + '/dia';
+  const end = enderecos[vagaSelecionada.setor] || 'Av. Paraná, 2.601 — São José';
+  document.getElementById('agenda-endereco').textContent = '📍 ' + end;
+  const badge = document.getElementById('agenda-turno-badge');
+  badge.textContent = vagaSelecionada.turno;
+  badge.className = 'tag-turno ' + (vagaSelecionada.turno === 'Manhã' ? 'manha' : 'tarde');
+  // Atualizar confirmação
+  document.getElementById('conf-local').textContent = vagaSelecionada.setor;
+  document.getElementById('conf-end').textContent = end;
+  // Reset seleções
+  diaSelecionado = ''; horarioSelecionado = '';
+  document.querySelectorAll('.cal-dia').forEach(d => {
+    d.style.background=''; d.style.color=''; d.style.borderColor='var(--cinza-borda)';
+  });
+  document.querySelectorAll('.slot-horario').forEach(s => {
+    s.style.background=''; s.style.color=''; s.style.borderColor='var(--cinza-borda)';
+  });
+  document.getElementById('bloco-horarios').style.display = 'none';
+  document.getElementById('bloco-confirmacao').style.display = 'none';
+  document.getElementById('btn-confirmar-agenda').disabled = true;
+  document.getElementById('btn-confirmar-agenda').style.opacity = '.4';
+  ir('tela-agendamento');
+}
+
+function selecionarDia(el, data) {
+  document.querySelectorAll('.cal-dia').forEach(d => {
+    d.style.background = ''; d.style.color = ''; d.style.borderColor = 'var(--cinza-borda)'; d.style.fontWeight = '';
+  });
+  el.style.background = '#1E4D8C';
+  el.style.color = '#fff';
+  el.style.borderColor = '#1E4D8C';
+  el.style.fontWeight = '700';
+  diaSelecionado = data + '/2026';
+  document.getElementById('bloco-horarios').style.display = 'block';
+  document.getElementById('label-data-sel').textContent =
+    'Horários disponíveis para ' + data + '/2026 — ' + vagaSelecionada.turno;
+  // Reset horário
+  horarioSelecionado = '';
+  document.querySelectorAll('.slot-horario').forEach(s => {
+    s.style.background = ''; s.style.color = ''; s.style.borderColor = 'var(--cinza-borda)';
+  });
+  document.getElementById('bloco-confirmacao').style.display = 'none';
+  document.getElementById('btn-confirmar-agenda').disabled = true;
+  document.getElementById('btn-confirmar-agenda').style.opacity = '.4';
+}
+
+function selecionarHorario(el, hora) {
+  document.querySelectorAll('.slot-horario').forEach(s => {
+    s.style.background = ''; s.style.color = ''; s.style.borderColor = 'var(--cinza-borda)'; s.style.fontWeight = '';
+  });
+  el.style.background = '#1B7A3E';
+  el.style.color = '#fff';
+  el.style.borderColor = '#1B7A3E';
+  el.style.fontWeight = '600';
+  horarioSelecionado = hora;
+  document.getElementById('conf-data').textContent = diaSelecionado;
+  document.getElementById('conf-hora').textContent = hora;
+  document.getElementById('bloco-confirmacao').style.display = 'block';
+  document.getElementById('btn-confirmar-agenda').disabled = false;
+  document.getElementById('btn-confirmar-agenda').style.opacity = '1';
+}
+
+function confirmarAgendamento() {
+  ir('tela-trilha-extra');
+  // Scroll para o passo 5
+  setTimeout(() => {
+    const passos = document.querySelectorAll('#tela-trilha-extra .passo');
+    if (passos[4]) {
+      passos[4].classList.add('aberto');
+      passos[4].scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  }, 300);
+  // Mostrar alerta de sucesso no passo 4
+  alert('✅ Visita agendada com sucesso!\n\n📅 Data: ' + diaSelecionado + '\n🕐 Horário: ' + horarioSelecionado + '\n🏛️ Local: ' + vagaSelecionada.setor + '\n\nVocê receberá a confirmação por e-mail e WhatsApp.\n\nNão esqueça de levar um documento de identificação!');
+}
+
+// ── Desistência / Segunda chance ──
+function abrirDesistencia(tipo) {
+  document.getElementById('modal-des-outra').style.display = tipo === 'outra' ? 'block' : 'none';
+  document.getElementById('modal-des-desistir').style.display = tipo === 'desistir' ? 'block' : 'none';
+  document.getElementById('modal-desistencia').classList.add('aberto');
+}
+function fecharDesistencia() {
+  document.getElementById('modal-desistencia').classList.remove('aberto');
+}
+function confirmarSegundaChance() {
+  fecharDesistencia();
+  alert('📨 Solicitação enviada ao RH/SEPLAG!\n\nAnalisaremos sua situação e entraremos em contato em até 48 horas por e-mail e WhatsApp para informar se há outra vaga disponível compatível com seu perfil.');
+  ir('tela-trilha-extra');
+}
+function confirmarDesistencia() {
+  fecharDesistencia();
+  alert('Sua desistência foi registrada.\n\nAgradecemos seu interesse em fazer parte da equipe de estagiários da Prefeitura de Divinópolis. Para participar novamente, fique atento aos próximos editais em:\n\nservicos.prefeituradivinopolis.com.br/estagiarios/');
+  ir('tela-home');
+}
+
+// ── Filtrar vagas ──
+function filtrarVagas() { /* Sprint 2 */ }
+</script>
+</body>
+</html>
